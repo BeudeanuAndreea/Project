@@ -24,9 +24,9 @@ body, html, .page-container{
 }
 
 .categories{
-    width:80%;
+    width:60%;
     height:80%;
-    margin: 5% 10% 5% 10%;
+    margin: 5% 20% 5% 20%;
     display: flex;
     flex-flow: row wrap;
     align-items: stretch;
