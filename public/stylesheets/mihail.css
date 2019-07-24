@@ -63,3 +63,14 @@ body, html, .page-container{
     font-weight: bold;
     text-shadow: 0 0 5px black;
 }
+
+@keyframes appear {
+    from {color:#CCCCCC}
+    to {color: #121212}
+
+}
+
+.quote{
+    animation-duration: 5s;
+    animation-name: appear;
+}
