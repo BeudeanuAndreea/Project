@@ -1,5 +1,20 @@
 $(document).ready(function () {
 
+  function getUser(username) {
+    var loginData = {'name: '}
+    $.ajax({
+      url: `/user`,
+      type: 'POST',
+      dataType: 'json',
+      success: function (data) {
+          console.log("bravo");
+      },
+      error: function (error) {
+          console.log(error);
+      }
+  });
+  }
+
    let container = $('<div>').addClass("container-login");
    let message = $('<div>').addClass("message").html('Hello');
    let inputs = $('<div>').addClass("inputs-login");
@@ -18,8 +33,13 @@ $(document).ready(function () {
   container.append(inputs);
   $('#content').append(container);
 
-  button.click(function) {
-    
-  }
+  button.click(function () {
+    const username = inputMail.val();
+    const password = inputPassword.val();
+    console.log(username);
+    console.log(password);
+    getUser(username, password);
+
+  });
     
 });
