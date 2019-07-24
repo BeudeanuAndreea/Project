@@ -2,7 +2,7 @@ body, html, .page-container{
     width: 100%;
     height: 100%;
     margin: 0;
-    background: #FEFDE1;
+    background: #CCCCCC;
     display: flex;
     flex-flow: column nowrap;
     position: relative;
@@ -10,14 +10,14 @@ body, html, .page-container{
 
 .banner{
     width: 100%;
-    height: 40%;
+    height: 25%;
 }
 
 .head{
     text-align: center;
-    font-family: "Kristen ITC", cursive;
+    font-family: "ROG Fonts v1.6", cursive;
     font-size: 45px;
-    color: #2A2926;
+    color: #121212;
     width: 50%;
     align-self: center;
     margin-bottom: 0;
@@ -37,12 +37,14 @@ body, html, .page-container{
     position: relative;
     width:50%;
     text-align: center;
+
 }
 
 .image{
     width:100%;
     height:100%;
     transition: transform 0.3s;
+    box-shadow: 0 0 30px black;
 }
 
 .image:hover{
@@ -55,8 +57,9 @@ body, html, .page-container{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 105;
-    color: #FEFDE1;
-    font-family: "Kristen ITC", serif;
-    font-size: 60px;
+    color: #CCCCCC;
+    font-family: "ROG Fonts v1.6", serif;
+    font-size: 350%;
     font-weight: bold;
+    text-shadow: 0 0 5px black;
 }
