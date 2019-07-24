@@ -1,0 +1,33 @@
+body, html, .page-container{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: #FEFDE1;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.banner{
+    width: 100%;
+    height: 40%;
+}
+
+.head{
+    text-align: center;
+    font-family: "Kristen ITC", cursive;
+    font-size: 45px;
+    color: #2A2926;
+    width: 50%;
+    align-self: center;
+}
+
+.categories{
+    width:80%;
+    height:80%;
+    margin: 10% 10% 10% 10%;
+}
+
+.category{
+    width:50%;
+
+}
