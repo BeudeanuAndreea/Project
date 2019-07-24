@@ -1,0 +1,15 @@
+.container-login{
+    border-radius: 4px;
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 0.5px 1px #888888;
+    width: 350px;
+    margin: 0 auto;
+}
+
+.inputs-login{
+    display: flex;
+    flex-direction: column;
+  
+}
