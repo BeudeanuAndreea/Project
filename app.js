@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 3200;
+const port = 3500;
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -20,6 +20,78 @@ db.on('error', function () {
 db.once('open', function () {
     console.log('db connected');
 });
+
+// var engines = require('consolidate');
+// app.set('andreea', __dirname + '/andreea');
+// app.engine('html', engines.mustache);
+// app.set('view engine', 'html');
+
+const itemSchema = new Schema({
+    artist: String,
+    name: String,
+    price: Number,
+    category_name: String,
+    src: String
+
+},{collection: 'item'});
+const Item = mongoose.model('Item', itemSchema);
+
+app.get('/items', function (request, response) {
+    console.log(request.body);
+    Item.find().then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
+app.get('/rock/items', function (request, response) {
+   
+    Item.find({category_name : 'rock'}).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
+app.get('/pop/items', function (request, response) {
+   
+    Item.find({category_name : 'pop'}).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
+app.get('/jazz/items', function (request, response) {
+   
+    Item.find({category_name : 'jazz'}).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
+app.get('/hiphop/items', function (request, response) {
+   
+    Item.find({category_name : 'hiphop'}).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
 app.listen(port, function () {
     console.log("hey");
 });
+
