@@ -26,6 +26,29 @@ function getCartItems() {
     });
 }
 
+function deleteItem(id) {
+    $.ajax({
+        url: `/delete/item/${id}`,
+        type: 'DELETE',
+        dataType: 'json',
+        success: function (data) {
+            for (i = 0; i < cartObjects.length; i++) {
+                if (cartObjects[i]._id == id) {
+                    cartObjects.splice(i, 1);
+                    break;
+                }
+            }
+
+            renderList(cartObjects);
+        },
+        error: function (error) {
+
+            console.log(error);
+        }
+    });
+
+}
+
 function renderList(cartObjects) {
     $('.container').html('');
     $.each(cartObjects, function () {
@@ -64,6 +87,9 @@ function createItem(cartObjects) {
     ul.append(play);
     ul.append(price);
     
+    trash.click(function(){
+        deleteItem(cartObjects._id);
+    })
 
 
     artist.append(cartObjects.artist);

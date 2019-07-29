@@ -159,6 +159,16 @@ app.get('/cart', function (request, response) {
         }
     })
 });
+app.delete('/delete/item/:id', function (request, response) {
+    User.findOneAndRemove({ _id: request.params.id }).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
 
 
 
