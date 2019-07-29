@@ -1,0 +1,122 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    margin:auto;
+    box-shadow: 3px 3px 3px 3px #dddddd;
+    width: 1000px;
+    min-height: 500px;
+    max-height: 8000px;
+    padding: 40px;
+    display: block;
+    position: relative;
+}
+.order{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background-color: #5EC13D;
+      border-radius: 3px;
+      border: 0px;
+      box-shadow: 1px 1px 1px 1px #dddddd;
+      padding: 5px 15px;
+      color: white;
+      
+      cursor: pointer;
+}
+.vinyl{
+    
+    margin-bottom: 40px;
+    box-shadow: 3px 3px 3px 3px #dddddd;   
+    background-color: white;
+    position: relative;
+    
+
+   
+}
+
+.icon{
+    width: 150px;
+    height: 150px;
+}
+.icon-box{
+    width: 150px;
+    height: 150px;
+}
+.attributes {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+
+  
+  }
+  .song-name p{
+    padding: 5px 0 0 10px;
+   margin: 0 20px;
+}
+.price{
+    padding: 10px 0 0 10px;
+    color: #BF3A38;
+    font: italic bold 20px/30px Georgia, serif;
+    position: absolute ;
+    right: 100px;
+    
+}
+.artist{
+    font-size: 23px;
+}
+.trash{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: rgb(54, 110, 36);
+}
+.total{
+    position: relative;
+   
+    display: flex;
+    flex-flow: row;
+    box-shadow: 3px 3px 3px 3px #dddddd;
+    width: 1080px;
+    margin:  10px auto;
+    
+  
+  
+  
+}
+
+.total-string{
+    font-size: 30px;
+    margin: 0;
+    position: relative;
+    left: 5px;
+}
+.total-price{
+    
+   
+    margin: 0;
+}
+.total-p{
+    margin:0 ;
+}
+.total-price-p{
+    margin:0;
+    position: absolute;
+    right: 100px;
+    color: #BF3A38;
+    font: italic bold 20px/30px Georgia, serif;
+}
+/* .container-right {
+  display: flex;
+  flex-wrap: wrap;
+
+  max-width: 1500px;
+  margin-right: 20px;
+  margin-left: 300px; 
+  flex-direction: row;
+  align-self: flex-end;
+ 
+} */
