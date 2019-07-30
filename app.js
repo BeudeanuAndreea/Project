@@ -39,6 +39,7 @@ const itemSchema = new Schema({
 
 const itemUser = new Schema({
     name: String,
+    password: String,
     cart: [{
         type: Schema.Types.ObjectId,
         ref: 'Item'
@@ -46,6 +47,18 @@ const itemUser = new Schema({
 }, { collection: 'user' });
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
+
+
+app.post('/login', function (request, response) {
+    User.find({ name: request.body.usermane, password: request.body.password}).then((data, error) => {
+         if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
+
 
 
 app.get('/items', function (request, response) {
