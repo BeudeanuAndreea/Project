@@ -4,104 +4,80 @@
 <head>
     <link rel="stylesheet" type="text/css" href="products.css">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-    <script src="jquery-1.7.1.js"></script> 
-     <script text="text/javascript" src = "products.js"></script> 
-     <link rel="shortcut icon" href="">
+    <script src="jquery-1.7.1.js"></script>
+    <script text="text/javascript" src="products.js"></script>
 
+
+	<script src="jquery-1.7.1.js"></script>
+	<link rel="stylesheet" href="manu.css">
 </head>
 
 <body>
     <div class="container">
         <div class='container-left'>
             <div class="section-title">
-                <span class="title">Category</span>
+                <span class="title">Categories</span>
             </div>
             <div>
                 <div class="categories">
-                    <div class='name rock'>
+                    <div class='name rock' id='rock-section'>
                         <p class='type'>Rock</p>
                     </div>
-                    <div class='name pop'>
+                    <div class='name pop' id='pop-section'>
                         <p class='type'>Pop</p>
                     </div>
-                    <div class='name jazz'>
+                    <div class='name jazz' id='jazz-section'>
                         <p class='type'>Jazz</p>
                     </div>
-                    <div class='name hip-hop'>
+                    <div class='name hip-hop' id='hiphop-section'>
                         <p class='type'>Hip-hop</p>
                     </div>
                 </div>
             </div>
+            <div class="section-title">
+                <span class="title">Filters</span>
+            </div>
+            <div class='filter'>
+                <div class='price_div'>
+                    <p class='drop_price'>Price</p>
+                </div>
+                <div class="price_list">
+                    <div class='price_between'><input id= 'checkbox'  class='cheap' type="checkbox">$1.00 - $10.00</div>
+                    <div class='price_between'><input id= 'checkbox' class='semi-cheap'type="checkbox">$10.00 - $20.00</div>
+                    <div class='price_between'><input  id= 'checkbox' class='medium'type="checkbox">$20.00 - $30.00</div>
+                    <div class='price_between'><input id= 'checkbox'  class='expensive'type="checkbox">$30.00 - $40.00</div>
+                    <div class='price_between'><input id= 'checkbox'  class='very-expensive'type="checkbox">$40.00 - $70.00</div>
+
+
+                </div>
+
+            </div>
+            <!-- <button type="submit" class="submit">ok</button> -->
 
         </div>
-        <div class='container-right'>
-             <!-- <div class='vinyl'>
-                        <ul>
-                                <li><img class="icon" src="storysofar.jpg"></li>
-                                <li class='song-name'><p class='artist'>The Story So Far</p> <p> What You Don't See</p></li>
-                                <li class="price"> $30.00 </li>
-                            </ul>
-                           <div class='button'><button  class=' button-color'type="button"><span>Add to cart</span></button></div> 
-              
-                </div>
-                <div class='vinyl'>
-                        <ul>
-                                <li><img src="thedamned.jpg"></li>
-                                <li class='song-name'><p class='artist'>The Damned</p><p> Don't Cry Wolf / One Way Love</p></li>
-                                <li class="price"> $7.94</li>
-                            </ul>
-
-                            <div class='button'><button  class=' button-color'type="button"><span>Add to cart</span></button></div>
-              
-                </div>
-                <div class='vinyl'>
-                        <ul>
-                            
-                                <li><img src="simpleminds.jpg">                          
-                                </li>
-                                <li class='song-name'><p class='artist'>Simple Minds</p> <p>Promised You A Miracle</p></li>
-                                <li class="price"> $3.99</li>
-                            </ul>
-
-                            <div class='button'><button class=' button-color' type="button"><span>Add to cart</span></button></div>
-              
-                </div>
-                <div class='vinyl'>
-                        <ul>
-                                <li><img src="sensesfail.jpg"></li>
-                                <li class='song-name'><p class='artist'> Senses Fail</p> <p> Pull The Thorns From Your Heart</p></li>
-                                <li class="price">$30.00</li>
-                            </ul>
-
-                           <div class='button'><button class=' button-color' type="button"><span>Add to cart</span></button></div> 
-              
-                </div>
-                <div class='vinyl'>
-                        <ul>
-                              
-                                <li><img src="paulmccartney.jpg"></li>
-                                <li class='song-name'><p class='artist'>Paul McCartney</p><p>Pipes Of Peace</p> </li>
-                                <li class="price">$20.00 </li>
-                            </ul>
-
-                           <div class='button'><button class=' button-color' type="button"><span>Add to cart</span></button></div> 
-                 
-                </div>
-                <div class='vinyl'>
-                        <ul>
-                             
-                                <li><img src="joecocker.jpg"></li>
-                                <li class='song-name'><p class='artist'>Joe Cocker</p><p> When The Night Comes</p></li>                              
-                                <li class="price"> $3.00</li>
-                            </ul>
-
-                            <div class='button'><button class=' button-color' type="button"><span>Add to cart</span></button></div>
-                 
-                </div> -->
-               
-
-        </div> 
+        <div class='container-right'></div>
     </div>
+
+<div class='container-top'>
+	<div class="topnav" id="myTopnav">
+
+  
+		<a href="login.html">Login</a>
+		<a href="contact.html">Contact</a>
+		 <a href="products.html">Product</a>
+		<a href="About.html">About</a>
+        <a href="/" >Home</a>
+        <a href="cart.html" class='submit' ><i class="fas fa-shopping-cart"></i></a>
+		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+		  <i class="fa fa-bars"></i>
+		</a>
+      </div>
+      </div>
+      
+
+
+    
+	
 </body>
 
 </html>

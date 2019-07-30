@@ -1,16 +1,18 @@
 body{
     display: flex;
     flex-direction: column;
+    background-image: url('/stylesheets/resized.jpg');
 }
 .container{
     margin:auto;
     box-shadow: 3px 3px 3px 3px #dddddd;
     width: 1000px;
-    min-height: 500px;
-    max-height: 8000px;
+    min-height: 100px;
+    max-height: 10000px;
     padding: 40px;
     display: block;
     position: relative;
+    background-color: white;
 }
 .order{
     position: absolute;
@@ -73,6 +75,7 @@ body{
     right: 5px;
     top: 5px;
     color: rgb(54, 110, 36);
+    cursor: pointer;
 }
 .total{
     position: relative;
@@ -82,6 +85,7 @@ body{
     box-shadow: 3px 3px 3px 3px #dddddd;
     width: 1080px;
     margin:  10px auto;
+   
     
   
   
@@ -120,3 +124,7 @@ body{
   align-self: flex-end;
  
 } */
+.message{
+    font-family: 'Courier New', Courier, monospace;
+
+}
