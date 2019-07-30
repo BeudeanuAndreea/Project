@@ -5,34 +5,38 @@ body, html, .page-container{
     display: flex;
     flex-flow: column nowrap;
     position: relative;
+    font-family: Calibri;
 
 }
 
 .who{
     position: absolute;
-    top:10%;
-    left: 40%;
+    top:7%;
+    left: 45%;
     font-family: "Ubuntu";
     text-align: center;
 }
 .deliver{
     position: absolute;
-    top:80%;
-    left: 40%;
+    top:55%;
+    left: 45%;
     font-family: "Ubuntu";
     text-align: center;
 }
 .content-deliver{
     display: flex;
     position: absolute;
-    top:90%;
-    left:5%;
+    top:60%;
+    left:25%;
+   
+    width: 1000px;
+   
 
 }
 .person{
     position: absolute;
-    top:30%;
-    left:20%;
+    top:20%;
+    left:27%;
 }
 .list-person{
     list-style: none;
@@ -69,16 +73,22 @@ body, html, .page-container{
 }
 .photo{
     width: 250px;
-    height: 300px;
+    height: 250px;
 }
 
 
 .vinyl{
+    position: relative;
+    top: 50px;
+
     width: 450px;
     height: 300px;
 }
 .right-container{
     margin-top: 25px;
     margin-left: 15px;
+    /* text-align: center; */
+}
+h3{
     text-align: center;
 }

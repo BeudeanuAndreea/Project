@@ -48,7 +48,6 @@ const itemUser = new Schema({
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
 
-
 app.post('/login', function (request, response) {
     User.find({ name: request.body.usermane, password: request.body.password}).then((data, error) => {
          if (error === undefined) {
@@ -57,9 +56,7 @@ app.post('/login', function (request, response) {
             response.status(500).json(null);
         }
     })
-});
-
-
+ });
 
 app.get('/items', function (request, response) {
     //console.log(request.body);
@@ -178,7 +175,8 @@ app.delete('/delete/item/:id', function (request, response) {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
-            response.status(500).json(null);
+            response.status(500).json(error);
+            
         }
         
     })

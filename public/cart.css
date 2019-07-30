@@ -1,6 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
+    background-image: url('/stylesheets/resized.jpg');
 }
 .container{
     margin:auto;
@@ -11,6 +12,7 @@ body{
     padding: 40px;
     display: block;
     position: relative;
+    background-color: white;
 }
 .order{
     position: absolute;
@@ -124,5 +126,5 @@ body{
 } */
 .message{
     font-family: 'Courier New', Courier, monospace;
-    
+
 }

@@ -29,7 +29,7 @@ function deleteCart(){
                                 
            // }
             $(".total-price-p").html("$"+total);
-            $(".message").html('Empty cart');
+            $(".message").html('Empty cart!');
             renderList(cartObjects);
 
         },
