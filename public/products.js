@@ -13,7 +13,7 @@ var objects = [{
     name: "dfsfds",
     price: "20",
     category_name: 'rock'
-   
+
 }];
 
 
@@ -23,8 +23,8 @@ $(document).ready(function () {
 
     console.log(addedToCart);
 
-    $('.submit').click(function(event){
-        
+    $('.submit').click(function (event) {
+
         sendObjectList(addedToCart);
         window.location.href = "cart.html";
     });
@@ -441,8 +441,8 @@ $(document).ready(function () {
             }
         });
     }
-    
-    function sendObjectList(addedToCart){
+
+    function sendObjectList(addedToCart) {
         addedToCart = JSON.stringify(addedToCart);
         //console.log(addedToCart);
         //console.log(list);
@@ -450,17 +450,17 @@ $(document).ready(function () {
             url: '/items/cart',
             type: 'put',
             dataType: 'json',
-            data: {elements: addedToCart},
+            data: { elements: addedToCart },
 
             success: function (data) {
                 // console.log(data);
-               
+
             },
             error: function (error) {
                 console.log(error);
-               
+
             }
-            
+
         });
 
     }
@@ -498,6 +498,7 @@ $(document).ready(function () {
         ul.append(play);
         ul.append(price);
         button.append(add);
+     
         add.append(span);
 
 
@@ -509,11 +510,12 @@ $(document).ready(function () {
         item.append(button);
         cat_name = object.category_name;
 
-       add.click(function(){
-           addedToCart.push(object._id);
-
-                
+        add.click(function () {
+            addedToCart.push(object._id);       
         });
+        
+
+
 
         return item;
 

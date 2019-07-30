@@ -130,7 +130,7 @@ app.post('/items/filter/both', function (request, response) {
 app.put('/items/cart', function (request, response) {
     x = JSON.parse(request.body.elements);
     //console.log(x);
-    User.findOne({ _id: "5d3e968351013124e027fbcf" }, function (err, user) {
+    User.findOne({ _id: "5d3e968c51013124e027fbd0" }, function (err, user) {
         if (err != undefined) {
             response.status(500).json(null);
         }
@@ -150,24 +150,37 @@ app.put('/items/cart', function (request, response) {
 app.get('/cart', function (request, response) {
     //console.log(request.body);
     
-    User.findOne({_id : "5d3e968351013124e027fbcf" }).populate('cart').then((data, error) => {
+    User.findOne({_id : "5d3e968c51013124e027fbd0" }).populate('cart').then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
-            console.log(data.cart[0]);
+           // console.log(data.cart[0]);
         } else {
             response.status(500).json(null);
         }
     })
 });
 app.delete('/delete/item/:id', function (request, response) {
-    User.findOneAndRemove({ _id: request.params.id }).then((data, error) => {
+    console.log(request.params.id);
+    User.updateOne({ _id: "5d3e968c51013124e027fbd0"},{$pull : {cart :{$in: [request.params.id]}}}).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
             response.status(500).json(null);
         }
+        
     })
 });
+app.delete('/delete', function (request, response) {
+    User.updateOne({ _id: "5d3e968c51013124e027fbd0"}, { $set: { cart: [] }}).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+        
+    })
+});
+
 
 
 
