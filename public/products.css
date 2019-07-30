@@ -1,0 +1,200 @@
+body {
+    margin: 30px 40px;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    font-family: Calibri;
+    background-image: url('background.jpg');
+  }
+.attributes {
+    list-style: none;
+    padding-left: 0;
+  
+  }
+  p{
+    padding: 20px 50px;
+    margin: auto auto auto 20px;
+  }
+ 
+  .name{
+      display: flex;
+      margin-bottom: 10px;
+      width: 300px;
+      box-shadow: 3px 3px 3px 3px #dddddd;
+      background-color: white;
+      cursor: pointer;
+  }
+  .rock {
+    border-color: #260800;
+    color: black;
+  }
+  
+  .rock:hover {
+    background-color: #260800;
+    color: white;
+  }
+  .pop {
+    border-color: #8D2B6E;
+    color: black;
+  }
+  
+  .pop:hover {
+    background-color: #8D2B6E;
+    color: white;
+  }
+  .jazz {
+    border-color: #307A9D;
+    color: black;
+  }
+  
+  .jazz:hover {
+    background-color: #307A9D;
+    color: white;
+  }
+  .hip-hop{
+    border-color: #676767;
+    color: black;
+  }
+  
+  .hip-hop:hover {
+    background-color: #676767;
+    color: white;
+  }
+
+
+
+
+  .categories:first-child{
+      margin-top: 10px;
+  }
+  .title {
+    border-bottom: 2px solid black;
+    padding: 20px 0 0 0;
+    color: #231f1f;
+    font-family: Calibri;
+    font-size: 25px;
+  }
+  .container-left{
+      width: 300px;
+      position: fixed;
+      height: 100%;
+      
+      
+  }
+  .section-title {
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+  }
+.icon{
+      width: 250px;
+      height: 250px;
+  }
+  .container-right {
+    display: flex;
+    flex-wrap: wrap;
+ 
+    max-width: 1500px;
+    margin-right: 20px;
+    margin-left: 300px; 
+    flex-direction: row;
+    align-self: flex-end;
+   
+  }
+
+  .container{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      
+      
+  }
+  .vinyl{
+      margin-left: 40px;
+      box-shadow: 3px 3px 3px 3px #dddddd;
+      margin-top: 20px;
+      transition:  all 3s;
+      background-color: white;
+     
+  }
+
+  .song-name p{
+      padding: 5px 0 0 10px;
+      margin: 0;
+  }
+  .price{
+      padding: 10px 0 0 10px;
+      color: #BF3A38;
+      font: italic bold 12px/30px Georgia, serif;
+  }
+  .button{
+      float: right;
+      margin: 0 10px 10px 0;
+      
+
+  }
+  .button-color{
+      background-color: #5EC13D;
+      border-radius: 3px;
+      border: 0px;
+      box-shadow: 1px 1px 1px 1px #dddddd;
+      padding: 5px;
+      color: white;
+      transition: all 0.7s;
+      cursor: pointer;
+  }
+  .artist{
+      font-size: 23px;
+  }
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 15px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .price_div{
+    
+    padding: 15px 5px;
+    box-shadow: 3px 3px 3px 3px #dddddd;
+    margin : 5px 0;
+
+    
+  }
+  
+  .drop_price{
+    padding:  0;
+    margin : auto auto auto 0;
+  }
+  .price_between{
+    padding: 10px 5px;
+    font-size: 15px;
+  }
+  .price_list{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+  }
+  #checkbox{
+    margin: 0  10px ;
+    
+  }
+  
+  
+  
