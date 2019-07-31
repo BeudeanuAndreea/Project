@@ -1,61 +1,48 @@
-body, html, .page-container{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    position: relative;
+body{
+    margin:0;
+    font-family:'Ubuntu';
 
 }
 
-.who{
-    position: absolute;
-    top:10%;
-    left: 40%;
-    font-family: "Ubuntu";
+.title{
     text-align: center;
+    margin-top: 80px;
 }
-.deliver{
-    position: absolute;
-    top:80%;
-    left: 40%;
-    font-family: "Ubuntu";
-    text-align: center;
+h2{
+    font-weight: normal;
 }
-.content-deliver{
-    display: flex;
-    position: absolute;
-    top:90%;
-    left:5%;
 
-}
 .person{
-    position: absolute;
-    top:30%;
-    left:20%;
+    width: 800px;
+    margin:50px auto;
 }
 .list-person{
     list-style: none;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+   flex-wrap: wrap;
     text-align: center;
-
+    font-size: 30px;
+    padding-inline-start: 0px;
 
 }
-.list-img{
-    background: white;
-    -moz-box-shadow: 0 0 3px #ccc;
-    -webkit-box-shadow: 0 0 3px #ccc;
-    box-shadow: 0 0 3px #ccc;
-    margin: 15px;
-    /*position: relative;*/
+.list-img:not(:last-child) {
+
+    margin-right: 20px;
+}
+.photo{
+    width: 250px;
+    height: 250px;
 }
 .item-list{
     padding-inline-start: 0;
     padding-bottom: 15px;
-    margin: 0;
     list-style: none; 
+}
+
+.quote{
+    animation-duration: 5s;
+    animation-name: appear;
 }
 @keyframes appear {
     from {color:#CCCCCC}
@@ -63,22 +50,21 @@ body, html, .page-container{
 
 }
 
-.quote{
-    animation-duration: 5s;
-    animation-name: appear;
+.content-deliver{
+    display: flex;
+    width: 920px;
+    margin:70px auto;
 }
-.photo{
-    width: 250px;
-    height: 300px;
+.left-container{
+  
+    margin-right:  25px;
+    font-size: 18px;
+     
 }
-
-
 .vinyl{
     width: 450px;
     height: 300px;
 }
-.right-container{
-    margin-top: 25px;
-    margin-left: 15px;
+h3{
     text-align: center;
 }

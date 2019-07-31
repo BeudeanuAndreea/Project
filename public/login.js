@@ -11,9 +11,9 @@ $(document).ready(function(){
     })    
 });
 
-function checkLogin(username, password){
+function checkLogin(name, password){
     let user = {
-        username: username, 
+        name: name, 
         password: password
     }
     console.log('buna', user);
