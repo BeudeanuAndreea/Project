@@ -41,8 +41,9 @@ function deleteCart(){
     });
     
 }
+
 function getCartItems() {
-    
+    //let itemNr=0;
     $.ajax({
         url: `/cart`,
         type: 'GET',
@@ -52,8 +53,11 @@ function getCartItems() {
             cartObjects = data.cart;
             for(i=0;i<cartObjects.length;i++){
                 total += cartObjects[i].price;
+               // itemNr++;
             }
             $(".total-price-p").html("$"+total);
+            //$(".prod-number").html(itemNr);
+            //console.log(itemNr);
 
            converted = convert(cartObjects);
         //    console.log(converted);
@@ -61,8 +65,9 @@ function getCartItems() {
         //        $('.quantity').html(converted[i].q);
         //        console.log(converted[i].q);
         //    }
-           
+            //sum(converted);
             renderList(converted);
+            
 
             //console.log(cartObjects);
          
@@ -73,7 +78,14 @@ function getCartItems() {
         }
     });
 }
+// function sum(converted){
+//     let itemNr=0;
+//     for(i=0;i<converted.length;i++){
+//         itemNr++;
+//     }
+//     $(".prod-number").html(itemNr);
 
+// }
 function deleteItem(id) {
    
     $.ajax({
@@ -139,7 +151,11 @@ function renderList(cartObjects) {
         //total += this.price;
         let item = createItem(this);
         $('.container').append(item);
+       
     });
+
+    
+
     //$(".total-price-p").html("$"+total);
 
 }
