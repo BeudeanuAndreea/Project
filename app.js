@@ -49,6 +49,11 @@ const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
 
 app.post('/login', function (request, response) {
+<<<<<<< HEAD
+    User.find({ name: request.body.usermane, password: request.body.password }).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+=======
     let user = request.body;
     console.log(user);
     User.findOne(user).then((data, error) => {
@@ -61,11 +66,12 @@ app.post('/login', function (request, response) {
                      localStorage.setItem()
                 }
            
+>>>>>>> 8c6246b133c007607b53557c61ad984273f8ca7c
         } else {
             response.status(500).json(null);
         }
     })
- });
+});
 
 app.get('/items', function (request, response) {
     //console.log(request.body);
@@ -78,74 +84,31 @@ app.get('/items', function (request, response) {
     })
 });
 
-app.get('/rock/items', function (request, response) {
+app.post('/items/filtered', function (request, response) {
+    let filterObject = {};
 
-    Item.find({ category_name: 'rock' }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
+    if(request.body.category_name){
+        filterObject.category_name = request.body.category_name;
+    }
+    if(request.body.price){
+        filterObject.price = {
+            $gte: request.body.price.min, 
+            $lte: request.body.price.max
         }
-    })
-});
-
-app.get('/pop/items', function (request, response) {
-
-    Item.find({ category_name: 'pop' }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
-        }
-    })
-});
-
-app.get('/jazz/items', function (request, response) {
-
-    Item.find({ category_name: 'jazz' }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
-        }
-    })
-});
-
-app.get('/hiphop/items', function (request, response) {
-
-    Item.find({ category_name: 'hiphop' }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
-        }
-    })
-});
-
-app.post('/items/filter', function (request, response) {
-    Item.find({ price: { $gt: request.body.min, $lt: request.body.max } }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
-        }
-    })
-});
-
-app.post('/items/filter/both', function (request, response) {
-    //console.log(Item.category_name);
-    if (Item.category_name == 'rock') {
-        Item.find({ price: { $gt: request.body.min, $lt: request.body.max } }).then((data, error) => {
-            if (error === undefined) {
-                response.status(200).json(data);
-            } else {
-                response.status(500).json(null);
-            }
-        })
-
     }
 
+    console.log('obj' ,filterObject);
+    
+    Item.find(filterObject).then((data, error) => {
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
 });
+
+
 app.put('/items/cart', function (request, response) {
     x = JSON.parse(request.body.elements);
     //console.log(x);
@@ -159,7 +122,7 @@ app.put('/items/cart', function (request, response) {
                 //console.log(x[i]);
                 user.cart.push(x[i]);
             }
-           // console.log('user cart second', user.cart);
+            // console.log('user cart second', user.cart);
             User.updateOne({ _id: user._id }, user, function (err, newUser) {
             });
         }
@@ -168,11 +131,11 @@ app.put('/items/cart', function (request, response) {
 
 app.get('/cart', function (request, response) {
     //console.log(request.body);
-    
-    User.findOne({_id : "5d3e968c51013124e027fbd0" }).populate('cart').then((data, error) => {
+
+    User.findOne({ _id: "5d3e968c51013124e027fbd0" }).populate('cart').then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
-           // console.log(data.cart[0]);
+            // console.log(data.cart[0]);
         } else {
             response.status(500).json(null);
         }
@@ -180,24 +143,24 @@ app.get('/cart', function (request, response) {
 });
 app.delete('/delete/item/:id', function (request, response) {
     console.log(request.params.id);
-    User.updateOne({ _id: "5d3e968c51013124e027fbd0"},{$pull : {cart :{$in: [request.params.id]}}}).then((data, error) => {
+    User.updateOne({ _id: "5d3e968c51013124e027fbd0" }, { $pull: { cart: { $in: [request.params.id] } } }).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
             response.status(500).json(error);
-            
+
         }
-        
+
     })
 });
 app.delete('/delete', function (request, response) {
-    User.updateOne({ _id: "5d3e968c51013124e027fbd0"}, { $set: { cart: [] }}).then((data, error) => {
+    User.updateOne({ _id: "5d3e968c51013124e027fbd0" }, { $set: { cart: [] } }).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
             response.status(500).json(null);
         }
-        
+
     })
 });
 
