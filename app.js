@@ -47,7 +47,7 @@ const itemUser = new Schema({
 }, { collection: 'user' });
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
-const userId = localStorage.getItem('User');
+
 
 app.post('/login', function (request, response) {
     let user = request.body;
