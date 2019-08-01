@@ -129,6 +129,17 @@ app.get('/cart', function (request, response) {
         }
     })
 });
+app.get('/cart/second', function (request, response) {
+    //console.log(request.body);
+    User.findOne({ _id : "5d41647b83d1890ed82849e3" }).populate('cart').then((data, error) => {
+
+        if (error === undefined) {
+            response.status(200).json(data);
+        } else {
+            response.status(500).json(null);
+        }
+    })
+});
 app.delete('/delete/item/:id', function (request, response) {
     console.log(request.params.id);
     User.updateOne({ _id: "5d3e968c51013124e027fbd0" }, { $pull: { cart: { $in: [request.params.id] } } }).then((data, error) => {

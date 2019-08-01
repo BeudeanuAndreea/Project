@@ -502,6 +502,7 @@ $(document).ready(function () {
             } else {
                 sendItem(object._id, object.name, userId); 
                 console.log(localStorage);
+                getCart();
             }
               
            

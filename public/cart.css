@@ -136,3 +136,19 @@ body{
     font-family: 'Courier New', Courier, monospace;
 
 }
+#cart{
+    font-size: 35px;
+    position: relative;
+  }
+.prod-number{
+    position: absolute;
+    color: #BF3A38;
+   top : 0.0001px;
+    
+    
+    z-index: auto;
+    right: 25px;
+    font-family: Ubuntu;
+
+  }
+  
