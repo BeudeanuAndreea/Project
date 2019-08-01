@@ -1,3 +1,10 @@
+  function logout(){
+         window.location.href = 'index.html';
+        console.log("heloo");
+        window.localStorage.clear();
+        console.log(userId);
+    }
+    
 $(document).ready(function(){
     
     // console.log(username,password);
@@ -9,13 +16,7 @@ $(document).ready(function(){
         checkLogin(username,password);
     });    
 
-    $('#logout').on("click", function(event){
-        console.log("heloo");
-        var userId;
-        userId = localStorage.removeUser(User);
-        console.log(userId);
-    })
-    
+  
 });
 
 function checkLogin(name, password){

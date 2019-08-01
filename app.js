@@ -153,9 +153,6 @@ app.delete('/delete', function (request, response) {
 });
 
 
-
-
-
 app.listen(port, function () {
     console.log("hey");
 });
