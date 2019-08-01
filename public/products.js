@@ -7,27 +7,19 @@ var selected = [false, false, false, false];
 var checkboxSelect = [false, false, false, false, false];
 var cat_name = null;
 addedToCart = [];
-var objects = [{
-    src: " assets/guts.jpg",
-    artist: "dsfsffdsfd",
-    name: "dfsfds",
-    price: "20",
-    category_name: 'rock'
+const userId = localStorage.getItem('User');
 
-}];
+
 
 
 $(document).ready(function () {
 
     getItems();
+    console.log(userId);
 
     console.log(addedToCart);
 
-    $('.submit').click(function (event) {
-
-        sendObjectList(addedToCart);
-        window.location.href = "cart.html";
-    });
+   
 
     $('#rock-section').click(function (event) {
         //unselect another section when this is clicked
@@ -442,12 +434,14 @@ $(document).ready(function () {
         });
     }
 
-    function sendItem(id, name) {
+    function sendItem(id, name, userId) {
         $.ajax({
             url: '/items/cart',
             type: 'put',
             dataType: 'json',
-            data: { id: id },
+            data: { id: id, 
+            userid: userId
+        },
             success: function (data) {
                 alert(`Order successfully for: ${name}`);
             },
@@ -464,7 +458,6 @@ $(document).ready(function () {
             $('.container-right').append(item);
         });
     }
-
 
     function createItem(object) {
         let item = $("<div>").addClass('vinyl');
@@ -502,30 +495,23 @@ $(document).ready(function () {
         item.append(button);
         cat_name = object.category_name;
 
-        add.click(function () {
-
-            sendItem(object._id, object.name);
+        add.click(function () {          
+                      
+            if (userId === undefined) {
+                 window.location.href = 'login.html';
+            } else {
+                sendItem(object._id, object.name, userId); 
+                console.log(localStorage);
+            }
+              
+           
         });
-
-
-
 
         return item;
 
 
 
-
-
-
-
     }
-
-
-
-
-
-
-
 
 
 });
