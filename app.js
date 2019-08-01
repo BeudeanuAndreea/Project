@@ -49,11 +49,6 @@ const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
 
 app.post('/login', function (request, response) {
-<<<<<<< HEAD
-    User.find({ name: request.body.usermane, password: request.body.password }).then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-=======
     let user = request.body;
     console.log(user);
     User.findOne(user).then((data, error) => {
@@ -66,7 +61,6 @@ app.post('/login', function (request, response) {
                      localStorage.setItem()
                 }
            
->>>>>>> 8c6246b133c007607b53557c61ad984273f8ca7c
         } else {
             response.status(500).json(null);
         }
