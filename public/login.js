@@ -7,10 +7,13 @@ $(document).ready(function(){
 
         console.log('.......', username, password, $('#username'))
         checkLogin(username,password);
-    })    
+    });    
 
     $('#logout').on("click", function(event){
-
+        console.log("heloo");
+        var userId;
+        userId = localStorage.removeUser(User);
+        console.log(userId);
     })
     
 });
@@ -27,7 +30,7 @@ function checkLogin(name, password){
         datatype: 'json',
         data:  user,
         success: function (data) {
-            //window.localStorage;
+            window.localStorage;
             localStorage.setItem("User", data._id);
             //var userId = localStorage.getItem(user);
             

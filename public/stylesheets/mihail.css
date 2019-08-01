@@ -1,13 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body, html, .page-container{
     width: 100%;
     height: 100%;
     margin: 0;
-    background: #CCCCCC;
+    
     display: flex;
     flex-flow: column nowrap;
     position: relative;
-    background-image: url('resized.jpg');
-    font-family: Calibri;
+    
+   
+}
+.home-background{
+   margin-top: 40px;
+   height: 100%-40px;
+   
+   
 }
 
 .banner{
@@ -34,7 +43,7 @@ body, html, .page-container{
 .categories{
    
     margin: 0 auto;
-    bottom: 40px;
+    bottom:1px;
     display: flex;
  
     align-items: stretch;
@@ -48,6 +57,7 @@ body, html, .page-container{
 
 }
 
+
 .image{
     width:100%;
     height:300px;
@@ -60,16 +70,18 @@ body, html, .page-container{
 }
 
 .category-text{
-    position: absolute;
-    top: 45%;
+    position: absolute; 
+    bottom: -35px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 105;
-    color: #CCCCCC;
-    font-family: "ROG Fonts v1.6", serif;
+    color:white;
+    font-family: Ubuntu ;
     font-size: 350%;
     font-weight: bold;
+    width: 100%;
     text-shadow: 0 0 5px black;
+    background-color: black;
 }
 
 @keyframes appear {
