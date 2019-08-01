@@ -473,7 +473,6 @@ $(document).ready(function () {
         });
     }
 
-
     function createItem(object) {
         let item = $("<div>").addClass('vinyl');
         let ul = $("<ul>").addClass('attributes');
@@ -511,12 +510,17 @@ $(document).ready(function () {
         cat_name = object.category_name;
 
         add.click(function () {
-            addedToCart.push(object._id);       
+            const userId = localStorage.getItem('User');
+            console.log(userId);
+            if (userId === undefined) {
+                 window.location.href = 'login.html';
+            } else {
+                addedToCart.push(object._id);  
+                console.log(localStorage);
+            }
+                 
         });
         
-
-
-
         return item;
 
 
