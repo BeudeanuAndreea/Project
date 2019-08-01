@@ -1,29 +1,25 @@
-
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body {
     
     display: flex;
     height: 100%;
     width: 100%;
     /* background-image: url('background.jpg'); */
-  font-family: Ubuntu;
   }
 .attributes {
     list-style: none;
     padding-left: 0;
   
   }
-  .type{
+  p{
     padding: 20px 50px;
-    margin: auto auto auto 20%;
-    font-size: 20px;
+    margin: auto auto auto 20px;
   }
  
   .name{
       display: flex;
       margin-bottom: 10px;
       width: 300px;
-      box-shadow: 1px 1px 1px 1px #f0efef;
+      box-shadow: 3px 3px 3px 3px #dddddd;
       background-color: white;
       cursor: pointer;
   }
@@ -71,10 +67,11 @@ body {
       margin-top: 10px;
   }
   .title {
-    
+    border-bottom: 2px solid black;
     padding: 20px 0 0 0;
     color: #231f1f;
-    font-size: 35px;
+    font-family: Calibri;
+    font-size: 25px;
   }
   .container-left{
       width: 300px;
@@ -84,13 +81,9 @@ body {
       
       
   }
-  .section-title:first-child{
-   
+  .section-title {
+    border-bottom: 1px solid #ccc;
     margin-top: 20px;
-  }
-  .section-title:not(:first-child){
-   
-    margin-top: 50px;
   }
 .icon{
       width: 330px;
@@ -113,17 +106,16 @@ body {
       width: 100%;
       height: 100%;
       position: absolute;
-      top:70px;
+      top:30px;
       
       
   }
   .vinyl{
       margin-left: 40px;
-      box-shadow: 1px 1px 1px 1px #f0efef;
+      box-shadow: 3px 3px 3px 3px #dddddd;
       margin-top: 20px;
       transition:  all 3s;
       background-color: white;
-      height: 550px;
      
   }
 
@@ -134,11 +126,11 @@ body {
   .price{
       padding: 10px 0 0 10px;
       color: #BF3A38;
-      font-size: 20px;
+      font: italic bold 12px/30px Georgia, serif;
   }
   .button{
       float: right;
-      margin: 0 20px 5px 0;
+      margin: 0 20px 20px 0;
       
 
   }
@@ -151,13 +143,9 @@ body {
       color: white;
       transition: all 0.7s;
       cursor: pointer;
-      font-size: 15px;
   }
   .artist{
-      font-size: 30px;
-  }
-  .row{
-    font-size: 20px;
+      font-size: 23px;
   }
   .button span {
     cursor: pointer;
@@ -167,7 +155,7 @@ body {
   }
   
   .button span:after {
-    content: '\003e';
+    content: '\00bb';
     position: absolute;
     opacity: 0;
     top: 0;
@@ -186,7 +174,7 @@ body {
   .price_div{
     
     padding: 15px 5px;
-    box-shadow: 1px 1px 1px 1px #f0efef;
+    box-shadow: 3px 3px 3px 3px #dddddd;
     margin : 5px 0;
     background-color: white;
     
@@ -195,7 +183,6 @@ body {
   .drop_price{
     padding:  0;
     margin : auto auto auto 0;
-    font-size: 20px;
     
   }
   .price_between{
@@ -203,29 +190,14 @@ body {
     font-size: 15px;
   }
   .price_list{
-    
+    border-bottom: 1px solid #ccc;
     display: flex;
     flex-direction: column;
   }
- #chk{
+  #checkbox{
     margin: 0  10px ;
     cursor: pointer;
     
-  }
-  .fas{
-    font-size: 35px;
-    position: relative;
-  }
-  .prod-number{
-    position: absolute;
-    color: #BF3A38;
-   top : 0.0001px;
-    
-    
-    z-index: auto;
-    right: 25px;
-    font-family: Ubuntu;
-
   }
   
   
