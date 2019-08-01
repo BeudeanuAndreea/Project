@@ -5,6 +5,7 @@ body{
 }
 .container{
     margin:auto;
+    box-shadow: 3px 3px 3px 3px #dddddd;
     width: 1000px;
     min-height: 100px;
     max-height: 10000px;
@@ -29,7 +30,7 @@ body{
 .vinyl{
     
     margin-bottom: 40px;
-    box-shadow: 1px 1px 1px 1px #f0efef;
+    box-shadow: 3px 3px 3px 3px #dddddd;   
     background-color: white;
     position: relative;
     
@@ -59,21 +60,12 @@ body{
    margin: 0 20px;
 }
 .price{
-    padding: 20px 0 0 10px;
+    padding: 10px 0 0 10px;
     color: #BF3A38;
-    font-family: Ubuntu;
+    font: italic bold 20px/30px Georgia, serif;
     position: absolute ;
-    left: 550px;
-    font-size: 20px;
+    right: 100px;
     
-}
-.quantity{
-    padding: 20px 0 0 20px;
-    color: #BF3A38;
-    font-family: Ubuntu;
-    position: absolute ;
-    right: 200px;
-    font-size: 20px;
 }
 .artist{
     font-size: 23px;
@@ -90,7 +82,7 @@ body{
    
     display: flex;
     flex-flow: row;
- background-color: white;
+    box-shadow: 3px 3px 3px 3px #dddddd;
     width: 1080px;
     margin:  10px auto;
    
