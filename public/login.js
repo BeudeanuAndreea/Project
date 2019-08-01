@@ -7,8 +7,15 @@ $(document).ready(function(){
 
         console.log('.......', username, password, $('#username'))
         checkLogin(username,password);
-        
-    })    
+    });    
+
+    $('#logout').on("click", function(event){
+        console.log("heloo");
+        var userId;
+        userId = localStorage.removeUser(User);
+        console.log(userId);
+    })
+    
 });
 
 function checkLogin(name, password){
@@ -23,13 +30,13 @@ function checkLogin(name, password){
         datatype: 'json',
         data:  user,
         success: function (data) {
-            console.log("ajung aici");
+            window.localStorage;
+            localStorage.setItem("User", data._id);
+            //var userId = localStorage.getItem(user);
+            
+          //  console.log(userId);
             window.location.href = 'index.html';
-            // console.log('ajung aici');
-            // console.log(data);
-            // if (data === 'Correct') {
-            //     window.location.href('index.html');
-            // }
+            alert("Hello"+" " + user.name);
         },
         errror: function(error) {
             console.log('servus');

@@ -48,34 +48,31 @@ const itemUser = new Schema({
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
 
+
 app.post('/login', function (request, response) {
     let user = request.body;
-    console.log(user);
-    User.findOne(user).then((data, error) => {
-         if (error === undefined) {
-                if(data === null){
+    User.findOne(user, (error, data) => {
+         if (error == undefined) {
+                if (data === null) {
                     response.status(500).json(null);
-                }
-                else{
-                     response.status(200).json(data);
-                     localStorage.setItem()
+                } else {
+                    console.log('here!!!')
+                    response.status(200).json(data);
                 }
            
         } else {
-            response.status(500).json(null);
+            response.status(500).json(error);
         }
     })
 });
 
 app.get('/items', function (request, response) {
     //console.log(request.body);
-    Item.find().then((data, error) => {
-        if (error === undefined) {
-            response.status(200).json(data);
-        } else {
-            response.status(500).json(null);
-        }
-    })
+    Item.find().then((data) => {
+        response.status(200).json(data);
+    }, (error) => {
+        response.status(500).json(null);
+    });
 });
 
 app.post('/items/filtered', function (request, response) {
@@ -104,9 +101,11 @@ app.post('/items/filtered', function (request, response) {
 
 
 app.put('/items/cart', function (request, response) {
+   
     x = JSON.parse(request.body.elements);
     //console.log(x);
-    User.findOne({ _id: "5d3e968c51013124e027fbd0" }, function (err, user) {
+    console.log( request.body.id);
+    User.findOne({ _id: request.body.id }, function (err, user) {
         if (err != undefined) {
             response.status(500).json(null);
         }
@@ -125,8 +124,8 @@ app.put('/items/cart', function (request, response) {
 
 app.get('/cart', function (request, response) {
     //console.log(request.body);
+    User.findOne({ _id : "5d41647b83d1890ed82849e3" }).populate('cart').then((data, error) => {
 
-    User.findOne({ _id: "5d3e968c51013124e027fbd0" }).populate('cart').then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
             // console.log(data.cart[0]);

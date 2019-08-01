@@ -2,18 +2,20 @@ allObjects = [];
 var criteria = {}
 var cat_name = null;
 addedToCart = [];
+const userId = localStorage.getItem('User');
 
 
 
 $(document).ready(function () {
 
     getItems();
+    console.log(userId);
 
     console.log(addedToCart);
 
     $('.submit').click(function (event) {
-
-        sendObjectList(addedToCart);
+        console.log("am ajuns in cos");
+        sendObjectList(addedToCart, userId);
         window.location.href = "cart.html";
     });
 
@@ -219,7 +221,8 @@ $(document).ready(function () {
         });
     }
 
-    function sendObjectList(addedToCart) {
+    function sendObjectList(addedToCart, userId) {
+        console.log("----------",userId);
         addedToCart = JSON.stringify(addedToCart);
         //console.log(addedToCart);
         //console.log(list);
@@ -227,7 +230,9 @@ $(document).ready(function () {
             url: '/items/cart',
             type: 'put',
             dataType: 'json',
-            data: { elements: addedToCart },
+            data: { elements: addedToCart,
+                    id: userId
+                 },
 
             success: function (data) {
                 // console.log(data);
@@ -249,7 +254,6 @@ $(document).ready(function () {
             $('.container-right').append(item);
         });
     }
-
 
     function createItem(object) {
         let item = $("<div>").addClass('vinyl');
@@ -288,28 +292,23 @@ $(document).ready(function () {
         cat_name = object.category_name;
 
         add.click(function () {
+           
+            
+            if (userId === undefined) {
+                 window.location.href = 'login.html';
+            } else {
+                addedToCart.push(object._id);  
+                console.log(localStorage);
+            }
+              
             addedToCart.push(object._id);
         });
-
-
-
 
         return item;
 
 
 
-
-
-
-
     }
-
-
-
-
-
-
-
 
 
 });
