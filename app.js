@@ -78,18 +78,18 @@ app.get('/items', function (request, response) {
 app.post('/items/filtered', function (request, response) {
     let filterObject = {};
 
-    if(request.body.category_name){
+    if (request.body.category_name) {
         filterObject.category_name = request.body.category_name;
     }
-    if(request.body.price){
+    if (request.body.price) {
         filterObject.price = {
-            $gte: request.body.price.min, 
+            $gte: request.body.price.min,
             $lte: request.body.price.max
         }
     }
 
-    console.log('obj' ,filterObject);
-    
+    console.log('obj', filterObject);
+
     Item.find(filterObject).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
@@ -102,21 +102,17 @@ app.post('/items/filtered', function (request, response) {
 
 app.put('/items/cart', function (request, response) {
    
-    x = JSON.parse(request.body.elements);
-    //console.log(x);
+
     console.log( request.body.id);
-    User.findOne({ _id: request.body.id }, function (err, user) {
+    User.findOne({ _id: request.body.userid }, function (err, user) {
         if (err != undefined) {
             response.status(500).json(null);
         }
         else {
-            //console.log('user cart first', user.cart);
-            for (i = 0; i < x.length; i++) {
-                //console.log(x[i]);
-                user.cart.push(x[i]);
-            }
-            // console.log('user cart second', user.cart);
+            console.log(request.body.id);
+            user.cart.push(request.body.id);
             User.updateOne({ _id: user._id }, user, function (err, newUser) {
+                response.status(200).json(true);
             });
         }
     });
@@ -128,7 +124,6 @@ app.get('/cart', function (request, response) {
 
         if (error === undefined) {
             response.status(200).json(data);
-            // console.log(data.cart[0]);
         } else {
             response.status(500).json(null);
         }
