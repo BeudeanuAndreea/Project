@@ -52,15 +52,15 @@ app.post('/login', function (request, response) {
     let user = request.body;
     console.log(user);
     User.findOne(user).then((data, error) => {
-         if (error === undefined) {
-                if(data === null){
-                    response.status(500).json(null);
-                }
-                else{
-                     response.status(200).json(data);
-                     localStorage.setItem()
-                }
-           
+        if (error === undefined) {
+            if (data === null) {
+                response.status(500).json(null);
+            }
+            else {
+                response.status(200).json(data);
+                localStorage.setItem()
+            }
+
         } else {
             response.status(500).json(null);
         }
@@ -81,18 +81,18 @@ app.get('/items', function (request, response) {
 app.post('/items/filtered', function (request, response) {
     let filterObject = {};
 
-    if(request.body.category_name){
+    if (request.body.category_name) {
         filterObject.category_name = request.body.category_name;
     }
-    if(request.body.price){
+    if (request.body.price) {
         filterObject.price = {
-            $gte: request.body.price.min, 
+            $gte: request.body.price.min,
             $lte: request.body.price.max
         }
     }
 
-    console.log('obj' ,filterObject);
-    
+    console.log('obj', filterObject);
+
     Item.find(filterObject).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
@@ -104,32 +104,23 @@ app.post('/items/filtered', function (request, response) {
 
 
 app.put('/items/cart', function (request, response) {
-    x = JSON.parse(request.body.elements);
-    //console.log(x);
     User.findOne({ _id: "5d3e968c51013124e027fbd0" }, function (err, user) {
         if (err != undefined) {
             response.status(500).json(null);
         }
         else {
-            //console.log('user cart first', user.cart);
-            for (i = 0; i < x.length; i++) {
-                //console.log(x[i]);
-                user.cart.push(x[i]);
-            }
-            // console.log('user cart second', user.cart);
+            user.cart.push(request.body.id);
             User.updateOne({ _id: user._id }, user, function (err, newUser) {
+                response.status(200).json(true);
             });
         }
     });
 });
 
 app.get('/cart', function (request, response) {
-    //console.log(request.body);
-
     User.findOne({ _id: "5d3e968c51013124e027fbd0" }).populate('cart').then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
-            // console.log(data.cart[0]);
         } else {
             response.status(500).json(null);
         }

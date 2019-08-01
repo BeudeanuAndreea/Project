@@ -1,8 +1,20 @@
 allObjects = [];
-var criteria = {}
+rockObjects = [];
+popObjects = [];
+jazzObjects = [];
+hiphopObjects = [];
+var selected = [false, false, false, false];
+var checkboxSelect = [false, false, false, false, false];
 var cat_name = null;
 addedToCart = [];
+var objects = [{
+    src: " assets/guts.jpg",
+    artist: "dsfsffdsfd",
+    name: "dfsfds",
+    price: "20",
+    category_name: 'rock'
 
+}];
 
 
 $(document).ready(function () {
@@ -18,183 +30,226 @@ $(document).ready(function () {
     });
 
     $('#rock-section').click(function (event) {
-        if (criteria.category_name != 'rock') {
-            criteria.category_name = 'rock';
+        //unselect another section when this is clicked
+        $("#pop-section").css('background', 'white');
+        $("#pop-section").css('color', 'black');
+        selected[1] = false;
+
+        $("#jazz-section").css('background', 'white');
+        $("#jazz-section").css('color', 'black');
+        selected[2] = false;
+
+        $("#hiphop-section").css('background', 'white');
+        $("#hiphop-section").css('color', 'black');
+        selected[3] = false;
+
+
+        if (selected[0] == false) {
+            selected[0] = true;
+            getRockItems();
             $(this).css('background', '#260800');
             $(this).css('color', 'white');
-            $('#pop-section').css('background', 'white');
-            $("#pop-section").css('color', 'black');
-            $('#jazz-section').css('background', 'white');
-            $("#jazz-section").css('color', 'black');
-            $('#hiphop-section').css('background', 'white');
-            $("#hiphop-section").css('color', 'black');
         }
         else {
-            criteria.category_name = undefined;
+            selected[0] = false;
+            getItems();
             $(this).css('background', 'white');
             $(this).css('color', 'black');
+
+
+
         }
 
-        getFilteredItems();
+
+
     });
 
 
     $('#pop-section').click(function (event) {
+        $("#rock-section").css('background', 'white');
+        $("#rock-section").css('color', 'black');
+        selected[0] = false;
 
-        if (criteria.category_name != 'pop') {
-            criteria.category_name = 'pop'
+        $("#jazz-section").css('background', 'white');
+        $("#jazz-section").css('color', 'black');
+        selected[2] = false;
+
+        $("#hiphop-section").css('background', 'white');
+        $("#hiphop-section").css('color', 'black');
+        selected[3] = false;
+        if (selected[1] == false) {
+            selected[1] = true;
+            getPopItems();
             $(this).css('background', '#8D2B6E');
             $(this).css('color', 'white');
-            $('#rock-section').css('background', 'white');
-            $("#rock-section").css('color', 'black');
-            $('#jazz-section').css('background', 'white');
-            $("#jazz-section").css('color', 'black');
-            $('#hiphop-section').css('background', 'white');
-            $("#hiphop-section").css('color', 'black');
         }
         else {
-            criteria.category_name = undefined;
+            selected[1] = false;
+            getItems();
             $(this).css('background', 'white');
             $(this).css('color', 'black');
         }
-        getFilteredItems();
+
+
     });
-
     $('#jazz-section').click(function (event) {
+        $("#rock-section").css('background', 'white');
+        $("#rock-section").css('color', 'black');
+        selected[0] = false;
 
-        if (criteria.category_name != 'jazz') {
-            criteria.category_name = 'jazz'
+        $("#pop-section").css('background', 'white');
+        $("#pop-section").css('color', 'black');
+        selected[1] = false;
+
+        $("#hiphop-section").css('background', 'white');
+        $("#hiphop-section").css('color', 'black');
+        selected[3] = false;
+
+        if (selected[2] == false) {
+            selected[2] = true;
+            getJazzItems();
             $(this).css('background', '#307A9D');
             $(this).css('color', 'white');
-            $('#rock-section').css('background', 'white');
-            $("#rock-section").css('color', 'black');
-            $('#pop-section').css('background', 'white');
-            $("#pop-section").css('color', 'black');
-            $('#hiphop-section').css('background', 'white');
-            $("#hiphop-section").css('color', 'black');
         }
         else {
-            criteria.category_name = undefined;
+            selected[2] = false;
+            getItems();
             $(this).css('background', 'white');
             $(this).css('color', 'black');
         }
-        getFilteredItems();
+
+
     });
-
     $('#hiphop-section').click(function (event) {
+        $("#rock-section").css('background', 'white');
+        $("#rock-section").css('color', 'black');
+        selected[0] = false;
 
-        if (criteria.category_name != 'hiphop') {
-            criteria.category_name = 'hiphop'
+        $("#pop-section").css('background', 'white');
+        $("#pop-section").css('color', 'black');
+        selected[1] = false;
+
+        $("#jazz-section").css('background', 'white');
+        $("#jazz-section").css('color', 'black');
+        selected[2] = false;
+        if (selected[3] == false) {
+            selected[3] = true;
+            getHiphopItems();
             $(this).css('background', '#676767');
             $(this).css('color', 'white');
-            $('#rock-section').css('background', 'white');
-            $("#rock-section").css('color', 'black');
-            $('#pop-section').css('background', 'white');
-            $("#pop-section").css('color', 'black');
-            $('#jazz-section').css('background', 'white');
-            $("#jazz-section").css('color', 'black');
         }
         else {
-            criteria.category_name = undefined;
+            selected[3] = false;
+            getItems();
             $(this).css('background', 'white');
             $(this).css('color', 'black');
         }
-        getFilteredItems();
+
+
+
     });
 
     $('.cheap').click(function (event) {
-
-        if (criteria.price != {
-            min: 1,
-            max: 10
-        }) {
-            criteria.price = {
-                min: 1,
-                max: 10
-            }
+        if (checkboxSelect[0] == false) {
+            checkboxSelect[0] = true;
+            getCheapItems();
         }
         else {
-            criteria.price = undefined;
+            checkboxSelect[0] = false;
+            getItems();
         }
-        getFilteredItems();
+        if (selected[0] == true) {
+
+            getBothFilters();
+
+        }
+
+
+        $(".semi-cheap").prop("checked", false);
+        $(".medium").prop("checked", false);
+        $(".expensive").prop("checked", false);
+        $(".very-expensive").prop("checked", false);
 
     });
     $('.semi-cheap').click(function (event) {
-        if (criteria.price != {
-            min: 10,
-            max: 20
-        }) {
-            criteria.price = {
-                min: 10,
-                max: 20
-            }
+        if (checkboxSelect[1] == false) {
+            checkboxSelect[1] = true;
+            getSemiCheapItems();
         }
         else {
-            criteria.price = undefined;
+            checkboxSelect[1] = false;
+            getItems();
         }
-        getFilteredItems();
+
+        $(".cheap").prop("checked", false);
+        $(".medium").prop("checked", false);
+        $(".expensive").prop("checked", false);
+        $(".very-expensive").prop("checked", false);
 
     });
     $('.medium').click(function (event) {
-        if (criteria.price != {
-            min: 20,
-            max: 30
-        }) {
-            criteria.price = {
-                min: 20,
-                max: 30
-            }
+        if (checkboxSelect[2] == false) {
+            checkboxSelect[2] = true;
+            getMediumItems();
         }
         else {
-            criteria.price = undefined;
+            checkboxSelect[2] = false;
+            getItems();
         }
-        getFilteredItems();
-    });
 
+        $(".cheap").prop("checked", false);
+        $(".semi-cheap").prop("checked", false);
+        $(".expensive").prop("checked", false);
+        $(".very-expensive").prop("checked", false);
+
+    });
     $('.expensive').click(function (event) {
-        if (criteria.price != {
-            min: 30,
-            max: 40
-        }) {
-            criteria.price = {
-                min: 30,
-                max: 40
-            }
+        if (checkboxSelect[3] == false) {
+            checkboxSelect[3] = true;
+            getExpensiveItems();
         }
         else {
-            criteria.price = undefined;
+            checkboxSelect[3] = false;
+            getItems();
         }
-        getFilteredItems();
+
+        $(".cheap").prop("checked", false);
+        $(".semi-cheap").prop("checked", false);
+        $(".medium").prop("checked", false);
+        $(".very-expensive").prop("checked", false);
 
     });
-
     $('.very-expensive').click(function (event) {
-        if (criteria.price != {
-            min: 40,
-            max: 70
-        }) {
-            criteria.price = {
-                min: 40,
-                max: 70
-            }
+        if (checkboxSelect[4] == false) {
+            checkboxSelect[4] = true;
+            getVeryExpensiveItems();
         }
         else {
-            criteria.price = undefined;
+            checkboxSelect[4] = false;
+            getItems();
         }
-        getFilteredItems();
+
+        $(".cheap").prop("checked", false);
+        $(".semi-cheap").prop("checked", false);
+        $(".medium").prop("checked", false);
+        $(".expensive").prop("checked", false);
+
     });
 
-
-    function getFilteredItems() {
+    function getBothFilters() {
         $.ajax({
-            url: '/items/filtered',
+            url: '/items/filter/both',
             type: 'post',
-            contentType: 'application/json',
             dataType: 'json',
-            data: JSON.stringify(criteria),
+            data: {
+
+                min: 1,
+                max: 10
+
+            },
             success: function (data) {
-                console.log('xxxxxxx', data);
                 renderList(data);
+
             },
             error: function (error) {
                 console.log(error);
@@ -202,6 +257,174 @@ $(document).ready(function () {
         });
 
     }
+
+
+    function getCheapItems() {
+        $.ajax({
+            url: '/items/filter',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                min: 1,
+                max: 10
+
+            },
+            success: function (data) {
+                renderList(data);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function getSemiCheapItems() {
+        $.ajax({
+            url: '/items/filter',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                min: 11,
+                max: 20
+
+            },
+            success: function (data) {
+                renderList(data);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function getMediumItems() {
+        $.ajax({
+            url: '/items/filter',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                min: 21,
+                max: 30
+
+            },
+            success: function (data) {
+                renderList(data);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function getExpensiveItems() {
+        $.ajax({
+            url: '/items/filter',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                min: 31,
+                max: 40
+
+            },
+            success: function (data) {
+                renderList(data);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    function getVeryExpensiveItems() {
+        $.ajax({
+            url: '/items/filter',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                min: 41,
+                max: 70
+
+            },
+            success: function (data) {
+                renderList(data);
+
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+
+    function getRockItems() {
+        $.ajax({
+            url: '/rock/items',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                //console.log(data);
+                renderList(data);
+                rockObjects = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+
+    }
+    function getPopItems() {
+        $.ajax({
+            url: '/pop/items',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                renderList(data);
+                popObjects = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+
+    }
+    function getJazzItems() {
+        $.ajax({
+            url: '/jazz/items',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                renderList(data);
+                jazzObjects = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+
+    }
+    function getHiphopItems() {
+        $.ajax({
+            url: '/hiphop/items',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                renderList(data);
+                hiphopObjects = data;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+
+    }
+
 
     function getItems() {
         $.ajax({
@@ -219,27 +442,19 @@ $(document).ready(function () {
         });
     }
 
-    function sendObjectList(addedToCart) {
-        addedToCart = JSON.stringify(addedToCart);
-        //console.log(addedToCart);
-        //console.log(list);
+    function sendItem(id, name) {
         $.ajax({
             url: '/items/cart',
             type: 'put',
             dataType: 'json',
-            data: { elements: addedToCart },
-
+            data: { id: id },
             success: function (data) {
-                // console.log(data);
-
+                alert(`Order successfully for: ${name}`);
             },
             error: function (error) {
-                console.log(error);
-
+                alert(`Order failed for: ${name}`);
             }
-
         });
-
     }
 
     function renderList(objects) {
@@ -261,7 +476,7 @@ $(document).ready(function () {
 
         const icon = $("<li>");
         const play = $("<li>").addClass('song-name');
-        const artist = $("<p>").addClass('artist');
+        const artist = $("<p>").addClass('artist').addClass('row');
         const name = $("<p>").addClass('row');
         const price = $("<li>").addClass('price').html('$');
         const add = $("<button>").addClass('button-color');
@@ -288,7 +503,8 @@ $(document).ready(function () {
         cat_name = object.category_name;
 
         add.click(function () {
-            addedToCart.push(object._id);
+
+            sendItem(object._id, object.name);
         });
 
 
