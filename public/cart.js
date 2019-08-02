@@ -2,10 +2,11 @@
 cartObjects = [];
  var converted;
 total=0;
-const userId=localStorage.getItem('User');
+var userId=localStorage.getItem('User');
+
 $(document).ready(function () {
 
-    getCartItems();
+    getCartItems(userId);
     $(".order").click(function(){
         alert("Order sent successfully!");
         deleteCart();
@@ -42,15 +43,19 @@ function deleteCart(){
     
 }
 
-function getCartItems() {
+function getCartItems(userId) {
     //let itemNr=0;
     $.ajax({
-        url: `/cart`,
-        type: 'GET',
+        url: '/cart',
+        type: 'post',
         dataType: 'json',
+        data : {
+            uid: userId
+        },
         success: function (data) {
-            
+       
             cartObjects = data.cart;
+            console.log(cartObjects);
             for(i=0;i<cartObjects.length;i++){
                 total += cartObjects[i].price;
                // itemNr++;
@@ -88,9 +93,10 @@ function getCartItems() {
 // }
 function deleteItem(id,userId) {
    console.log(userId);
+   console.log(converted);
     $.ajax({
         url: `/delete/item`,
-        type: 'put',
+        type: 'delete',
         dataType: 'json',
         data: {
             id: id,
@@ -98,7 +104,7 @@ function deleteItem(id,userId) {
         },
         success: function (data) {
            
-           
+           console.log("dfdfdgdgfdfgg",converted);
               for (i = 0; i < converted.length; i++) {
                  if (converted[i]._id == id && converted[i].q == 1) {
 
