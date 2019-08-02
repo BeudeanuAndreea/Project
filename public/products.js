@@ -223,7 +223,7 @@ $(document).ready(function () {
             url: '/items/cart',
             type: 'put',
             dataType: 'json',
-            data: { id: id, 
+            data: { id: id,
             userid: userId
         },
             success: function (data) {
@@ -235,7 +235,7 @@ $(document).ready(function () {
         });
     }
 
-   
+
 
     function renderList(objects) {
         $('.container-right').html('');
@@ -282,18 +282,18 @@ $(document).ready(function () {
         item.append(button);
         cat_name = object.category_name;
 
-        
-        add.click(function () {          
-                      
+
+        add.click(function () {
+
             if (userId === undefined) {
                  window.location.href = 'login.html';
             } else {
-                sendItem(object._id, object.name, userId); 
+                sendItem(object._id, object.name, userId);
                 console.log(localStorage);
                 getCart();
             }
-              
-           
+
+
         });
 
         return item;

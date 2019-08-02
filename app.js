@@ -6,13 +6,13 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/', express.static(`${__dirname}/public`));
 
-mongoose.connect('mongodb://localhost/project', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/project', {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', function () {
     console.log("error");
@@ -33,8 +33,7 @@ const itemSchema = new Schema({
     category_name: String,
     src: String
 
-}, { collection: 'item' });
-
+}, {collection: 'item'});
 
 
 const itemUser = new Schema({
@@ -44,7 +43,7 @@ const itemUser = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Item'
     }]
-}, { collection: 'user' });
+}, {collection: 'user'});
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
 
@@ -52,14 +51,14 @@ const User = mongoose.model('User', itemUser);
 app.post('/login', function (request, response) {
     let user = request.body;
     User.findOne(user, (error, data) => {
-         if (error == undefined) {
+        if (error == undefined) {
                 if (data === null) {
                     response.status(500).json(null);
                 } else {
                     console.log('here!!!')
                     response.status(200).json(data);
                 }
-           
+
         } else {
             response.status(500).json(error);
         }
@@ -101,18 +100,16 @@ app.post('/items/filtered', function (request, response) {
 
 
 app.put('/items/cart', function (request, response) {
-   
+
 
     console.log( request.body.id);
-    User.findOne({ _id: request.body.userid }, function (err, user) {
+    User.findOne({_id: request.body.userid}, function (err, user) {
         if (err != undefined) {
             response.status(500).json(null);
-        }
-        else {
+        } else {
             console.log(request.body.id);
             user.cart.push(request.body.id);
-            User.updateOne({ _id: user._id }, user, function (err, newUser) {
-                response.status(200).json(true);
+            User.updateOne({_id: user._id}, user, function (err, newUser) {response.status(200).json(true);
             });
         }
     });
@@ -142,7 +139,7 @@ app.get('/cart/second', function (request, response) {
 });
 app.delete('/delete/item/:id', function (request, response) {
     console.log(request.params.id);
-    User.updateOne({ _id: "5d3e968c51013124e027fbd0" }, { $pull: { cart: { $in: [request.params.id] } } }).then((data, error) => {
+    User.updateOne({_id: "5d3e968c51013124e027fbd0" }, { $pull: { cart: { $in: [request.params.id] } } }).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
@@ -153,7 +150,7 @@ app.delete('/delete/item/:id', function (request, response) {
     })
 });
 app.delete('/delete', function (request, response) {
-    User.updateOne({ _id: "5d3e968c51013124e027fbd0" }, { $set: { cart: [] } }).then((data, error) => {
+    User.updateOne({_id: "5d3e968c51013124e027fbd0" }, {$set: {cart: []} }).then((data, error) => {
         if (error === undefined) {
             response.status(200).json(data);
         } else {
@@ -168,3 +165,17 @@ app.listen(port, function () {
     console.log("hey");
 });
 
+const categorySchema = new Schema({
+    name: String,
+    sales: Number
+}, {collection: 'category'});
+
+const Category = mongoose.model('Category', categorySchema);
+
+app.get('/statistics', function (request, response) {
+    Category.find().then((data) => {
+        response.status(200).json(data);
+    }, (error) => {
+        response.status(500).json(error);
+    });
+});
