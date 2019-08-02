@@ -137,15 +137,9 @@ app.get('/cart/second', function (request, response) {
         }
     })
 });
-<<<<<<< HEAD
 app.put('/delete/item', function (request, response) {
     console.log(request.body.userid);
     User.updateOne({ _id: request.body.userid }, { $pull: { cart: { $in: [request.body.id] } } }).then((data, error) => {
-=======
-app.delete('/delete/item/:id', function (request, response) {
-    console.log(request.params.id);
-    User.updateOne({_id: "5d3e968c51013124e027fbd0" }, { $pull: { cart: { $in: [request.params.id] } } }).then((data, error) => {
->>>>>>> 6044558fd01ba8d0cdc644410cbed758d9995f17
         if (error === undefined) {
             response.status(200).json(data);
         } else {
