@@ -10,8 +10,6 @@ addedToCart = [];
 const userId = localStorage.getItem('User');
 
 
-
-
 $(document).ready(function () {
 
     getItems();

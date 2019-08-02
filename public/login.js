@@ -1,5 +1,5 @@
   function logout(){
-         window.location.href = 'index.html';
+        window.location.href = 'index.html';
         console.log("heloo");
         window.localStorage.clear();
         console.log(userId);
