@@ -421,10 +421,7 @@ $(document).ready(function () {
                 console.log(error);
             }
         });
-
-
     }
-
 
     function getItems() {
         $.ajax({

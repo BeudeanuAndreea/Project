@@ -1,4 +1,4 @@
-body, html, .page-container{
+body, html, .page-container {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -7,59 +7,58 @@ body, html, .page-container{
     flex-flow: column nowrap;
     position: relative;
     background-image: url('resized.jpg');
-    font-family: Calibri;
+    font-family: Calibri, serif;
 }
 
-.banner{
+.banner {
     width: 100%;
     height: 25%;
     box-shadow: 0 0 40px 0 black;
 
 }
 
-.head{
+.head {
     text-align: center;
-    font-family: 'Courier'; 
+    font-family: 'Courier', serif;
     font-style: italic;
     font-size: 55px;
-    color:#CDCFC9;
+    color: #CDCFC9;
     width: 50%;
     align-self: center;
-    margin-bottom: 0;
     position: absolute;
     margin: auto;
     top: 40%;
 }
 
-.categories{
-   
+.categories {
+
     margin: 0 auto;
     bottom: 40px;
     display: flex;
- 
+
     align-items: stretch;
     position: absolute;
 }
 
-.category{
+.category {
     position: relative;
-    width:100%;
+    width: 100%;
     text-align: center;
 
 }
 
-.image{
-    width:100%;
-    height:300px;
+.image {
+    width: 100%;
+    height: 300px;
     transition: transform 0.3s;
     box-shadow: 0 0 30px black;
 }
 
-.image:hover{
-    transform:scale(0.80);
+.image:hover {
+    transform: scale(0.80);
 }
 
-.category-text{
+.category-text {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -73,12 +72,134 @@ body, html, .page-container{
 }
 
 @keyframes appear {
-    from {color:#CCCCCC}
-    to {color: #121212}
+    from {
+        color: #CCCCCC
+    }
+    to {
+        color: #121212
+    }
 
 }
 
-.quote{
+.quote {
     animation-duration: 5s;
     animation-name: appear;
 }
+
+.statistics {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-flow: wrap;
+}
+
+.save {
+    background-color: white;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.description {
+    width: 30%;
+    height: 65%;
+    text-align: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-family: Ubuntu, serif;
+    font-weight: bold;
+}
+
+.description > * {
+    margin: 0;
+}
+
+@media(min-width: 100px){
+    .description{
+        font-size: 15px;
+    }
+}
+
+@media(min-width: 350px){
+    .description{
+        font-size: 25px;
+    }
+}
+
+@media(min-width: 600px){
+    .description{
+        font-size: 45px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .description{
+        font-size: 65px;
+    }
+}
+
+.border {
+    height: 65%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+}
+
+.bar {
+    margin: 0;
+    border-radius: 10px;
+    height: 97%;
+    width: 90%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.border-rock {
+
+    background: linear-gradient(to top, #280a00, #f4cb8d);
+}
+
+.bar-rock {
+    background: linear-gradient(to top, #280a00, #f4cb8d);
+}
+
+
+.border-pop {
+
+    background: linear-gradient(to top, #091153, #9f0d64);
+}
+
+.bar-pop {
+    background: linear-gradient(to top, #091153, #9f0d64);
+}
+
+
+.border-jazz{
+    background: linear-gradient(to top, #0f425a,#4f9bbf);
+}
+.bar-jazz{
+    background: linear-gradient(to top, #0f425a,#4f9bbf);
+}
+
+.border-hip-hop{
+    background: linear-gradient(to top, #222222,#afafaf);
+}
+.bar-hip-hop{
+    background: linear-gradient(to top, #222222,#afafaf);
+}
+
+.fill {
+    background: white;
+    width: 100%;
+}
+
