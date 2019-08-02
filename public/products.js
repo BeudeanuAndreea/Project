@@ -2,7 +2,7 @@ allObjects = [];
 var criteria = {}
 var cat_name = null;
 addedToCart = [];
-
+const userId=localStorage.getItem('User');
 
 
 $(document).ready(function () {
@@ -10,6 +10,23 @@ $(document).ready(function () {
     getItems();
 
     console.log(addedToCart);
+    $('.search').click(function (event) {
+        criteria.price={
+            min : $('.min').val(),
+            max : $('.max').val()
+        }
+       if(criteria.price.min > criteria.price.max){
+           alert("Please rewrite the prices!");
+           getItems();
+           $('.min').val('');
+           $('.max').val('')
+          
+       }
+       else{
+            getFilteredItems();
+       }
+        
+    });
 
     $('.submit').click(function (event) {
 
@@ -115,6 +132,7 @@ $(document).ready(function () {
         }
         else {
             criteria.price = undefined;
+           
         }
         getFilteredItems();
 
