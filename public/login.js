@@ -1,3 +1,10 @@
+  function logout(){
+         window.location.href = 'index.html';
+        console.log("heloo");
+        window.localStorage.clear();
+        console.log(userId);
+    }
+    
 $(document).ready(function(){
     
     // console.log(username,password);
@@ -7,13 +14,14 @@ $(document).ready(function(){
 
         console.log('.......', username, password, $('#username'))
         checkLogin(username,password);
-        
-    })    
+    });    
+
+  
 });
 
-function checkLogin(username, password){
+function checkLogin(name, password){
     let user = {
-        username: username, 
+        name: name, 
         password: password
     }
     console.log('buna', user);
@@ -23,13 +31,13 @@ function checkLogin(username, password){
         datatype: 'json',
         data:  user,
         success: function (data) {
-            console.log("ajung aici");
+            window.localStorage;
+            localStorage.setItem("User", data._id);
+            //var userId = localStorage.getItem(user);
+            
+          //  console.log(userId);
             window.location.href = 'index.html';
-            // console.log('ajung aici');
-            // console.log(data);
-            // if (data === 'Correct') {
-            //     window.location.href('index.html');
-            // }
+            alert("Hello"+" " + user.name);
         },
         errror: function(error) {
             console.log('servus');

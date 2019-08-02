@@ -5,7 +5,6 @@ body{
 }
 .container{
     margin:auto;
-    box-shadow: 3px 3px 3px 3px #dddddd;
     width: 1000px;
     min-height: 100px;
     max-height: 10000px;
@@ -30,7 +29,7 @@ body{
 .vinyl{
     
     margin-bottom: 40px;
-    box-shadow: 3px 3px 3px 3px #dddddd;   
+    box-shadow: 1px 1px 1px 1px #f0efef;
     background-color: white;
     position: relative;
     
@@ -60,12 +59,21 @@ body{
    margin: 0 20px;
 }
 .price{
-    padding: 10px 0 0 10px;
+    padding: 20px 0 0 10px;
     color: #BF3A38;
-    font: italic bold 20px/30px Georgia, serif;
+    font-family: Ubuntu;
     position: absolute ;
-    right: 100px;
+    left: 550px;
+    font-size: 20px;
     
+}
+.quantity{
+    padding: 20px 0 0 20px;
+    color: #BF3A38;
+    font-family: Ubuntu;
+    position: absolute ;
+    right: 200px;
+    font-size: 20px;
 }
 .artist{
     font-size: 23px;
@@ -82,7 +90,7 @@ body{
    
     display: flex;
     flex-flow: row;
-    box-shadow: 3px 3px 3px 3px #dddddd;
+ background-color: white;
     width: 1080px;
     margin:  10px auto;
    
@@ -128,3 +136,19 @@ body{
     font-family: 'Courier New', Courier, monospace;
 
 }
+#cart{
+    font-size: 35px;
+    position: relative;
+  }
+.prod-number{
+    position: absolute;
+    color: #BF3A38;
+   top : 0.0001px;
+    
+    
+    z-index: auto;
+    right: 25px;
+    font-family: Ubuntu;
+
+  }
+  

@@ -1,5 +1,6 @@
 
 cartObjects = [];
+converted = convert(cartObjects);
 total=0;
 
 $(document).ready(function () {
@@ -40,7 +41,9 @@ function deleteCart(){
     });
     
 }
+
 function getCartItems() {
+    //let itemNr=0;
     $.ajax({
         url: `/cart`,
         type: 'GET',
@@ -50,9 +53,22 @@ function getCartItems() {
             cartObjects = data.cart;
             for(i=0;i<cartObjects.length;i++){
                 total += cartObjects[i].price;
+               // itemNr++;
             }
             $(".total-price-p").html("$"+total);
-            renderList(cartObjects);
+            //$(".prod-number").html(itemNr);
+            //console.log(itemNr);
+
+           converted = convert(cartObjects);
+        //    console.log(converted);
+        //    for(i=0;i<converted.length;i++){
+        //        $('.quantity').html(converted[i].q);
+        //        console.log(converted[i].q);
+        //    }
+            //sum(converted);
+            renderList(converted);
+            
+
             //console.log(cartObjects);
          
             
@@ -62,26 +78,40 @@ function getCartItems() {
         }
     });
 }
+// function sum(converted){
+//     let itemNr=0;
+//     for(i=0;i<converted.length;i++){
+//         itemNr++;
+//     }
+//     $(".prod-number").html(itemNr);
 
+// }
 function deleteItem(id) {
+   
     $.ajax({
         url: `/delete/item/${id}`,
         type: 'DELETE',
         dataType: 'json',
         success: function (data) {
-            for (i = 0; i < cartObjects.length; i++) {
-                if (cartObjects[i]._id == id) {
-                    //console.log(cartObjects[i]);
-                    total =total- cartObjects[i].price;
-                    cartObjects.splice(i, 1);
-                    break;
+            console.log(converted);
+            // for (i = 0; i < cartObjects.length; i++) {
+            //     if (cartObjects[i]._id == id && cartObjects[i].q == 1) {
+
+            //         console.log(cartObjects[i].q);
+            //         total =total- cartObjects[i].price;
+            //         cartObjects.splice(i, 1);
+            //         break;
                     
-                }
-            }
-            $(".total-price-p").html("$"+total);
-            // getCartItems();
+            //     }
+            //     else if(cartObjects[i]._id == id && cartObjects[i].q > 1){
+            //         cartObjects[i].q--;
+            //         total =total- cartObjects[i].price;
+            //     }
+            // }
+            // $(".total-price-p").html("$"+total);
+            // // getCartItems();
             
-            renderList(cartObjects);
+           // renderList(convert(cartObjects));
 
         },
         error: function (error) {
@@ -92,13 +122,40 @@ function deleteItem(id) {
 
 }
 
+function convert(cartObjects){
+    let i=0;
+    let qobjects=[];
+    while(i<cartObjects.length){
+        let item = cartObjects[i];
+        let  q=0;
+        let j=0;
+        while(j<cartObjects.length){
+            if(cartObjects[j]._id == item._id){
+                q++;
+                cartObjects.splice(j,1);
+            }
+            else{
+                j++;
+            }
+           
+        }
+        item.q= q;
+        qobjects.push(item);
+    }
+    return qobjects;
+}
+
 function renderList(cartObjects) {
     $('.container').html('');
     $.each(cartObjects, function () {
         //total += this.price;
         let item = createItem(this);
         $('.container').append(item);
+       
     });
+
+    
+
     //$(".total-price-p").html("$"+total);
 
 }
@@ -107,6 +164,7 @@ function renderList(cartObjects) {
 
 
 function createItem(cartObjects) {
+    let converted = convert(cartObjects);
     let item = $("<div>").addClass('vinyl');
     let trash = $("<i>").addClass('fas fa-trash').addClass("trash");
     
@@ -121,6 +179,8 @@ function createItem(cartObjects) {
     const artist = $("<p>").addClass('artist').addClass('row');
     const name = $("<p>").addClass('row');
     const price = $("<li>").addClass('price').html('$');
+    const quantity = $("<li>").addClass('quantity');
+    quantity.append(cartObjects.q);
     
 
     play.append(artist);
@@ -129,6 +189,7 @@ function createItem(cartObjects) {
     ul.append(icon);
     ul.append(play);
     ul.append(price);
+    ul.append(quantity);
     
     trash.click(function(){
         deleteItem(cartObjects._id);
