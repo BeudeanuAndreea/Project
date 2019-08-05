@@ -14,7 +14,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                for (let i = 0; i <= data.length; i++)
+                for (let i = 0; i < data.length; i++)
                     $("." + data[i].name).css("height", (100 - data[i].sales) + "%");
             },
             error: function (error) {
