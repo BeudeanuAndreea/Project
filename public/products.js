@@ -8,6 +8,10 @@ const userId=localStorage.getItem('User');
 $(document).ready(function () {
 
     getItems();
+    $('#rock-section').css("border","0.5px solid rgb(238, 238, 238)");
+    $('#pop-section').css("border","0.5px solid rgb(238, 238, 238)");
+    $('#jazz-section').css("border","0.5px solid rgb(238, 238, 238)");
+    $('#hiphop-section').css("border","0.5px solid rgb(238, 238, 238)");
 
     console.log(addedToCart);
     $('.search').click(function (event) {
@@ -22,6 +26,7 @@ $(document).ready(function () {
            $('.max').val('')
           
        }
+     
        else{
             getFilteredItems();
        }
@@ -39,6 +44,7 @@ $(document).ready(function () {
             criteria.category_name = 'rock';
             $(this).css('background', '#260800');
             $(this).css('color', 'white');
+            
             $('#pop-section').css('background', 'white');
             $("#pop-section").css('color', 'black');
             $('#jazz-section').css('background', 'white');
