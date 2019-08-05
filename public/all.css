@@ -1,7 +1,6 @@
-body{
-    font-family: Calibri;
-}
 
-.justified{
-    text-align: justify;
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body{
+    font-family: Ubuntu;
 }

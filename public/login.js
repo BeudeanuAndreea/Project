@@ -1,14 +1,17 @@
+
+  
   function logout(){
          window.location.href = 'index.html';
         console.log("heloo");
         window.localStorage.clear();
+     
         console.log(userId);
     }
     
 $(document).ready(function(){
     
     // console.log(username,password);
-    $('#button').on("click", function(event){
+    $('#button2').on("click", function(event){
         var username = $('#username').val();
         var password = $('#password').val();
 
@@ -33,11 +36,14 @@ function checkLogin(name, password){
         success: function (data) {
             window.localStorage;
             localStorage.setItem("User", data._id);
+            localStorage.setItem("Name", data.name);
             //var userId = localStorage.getItem(user);
-            
+           
           //  console.log(userId);
             window.location.href = 'index.html';
             alert("Hello"+" " + user.name);
+            $(".user").html("ssdfSDFrfrfdfgd");
+            
         },
         errror: function(error) {
             console.log('servus');
