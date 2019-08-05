@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body{
     margin:0;
     font-family:'Ubuntu';
@@ -22,7 +23,7 @@ h2{
     flex-direction: row;
    flex-wrap: wrap;
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
     padding-inline-start: 0px;
 
 }

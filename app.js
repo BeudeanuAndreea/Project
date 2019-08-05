@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 const Schema = mongoose.Schema;
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,6 +47,38 @@ const itemUser = new Schema({
 }, { collection: 'user' });
 const Item = mongoose.model('Item', itemSchema);
 const User = mongoose.model('User', itemUser);
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    secure: false,
+    port: 25,
+    auth: {
+        user: 'springinterns4@gmail.com',
+        pass: 'Project.002'
+    },
+    tls: {
+        rejectUnathorized: false
+    }
+});
+app.post('/send', function(request,response) {
+    console.log(request.body);
+    let HelperOptions = {
+    from: 'springinterns4@gmail.com',
+    to: 'springinterns4@gmail.com',
+    subject: request.body.email,
+    text:request.body.name +"  "+ "sent text: " + request.body.message
+};
+transporter.sendMail(HelperOptions,(error,info) =>{
+    if(error){
+         response.status(500).json(null);
+       return console.log(error);
+    } else{ 
+        console.log("the message was sent");
+        response.status(200).json(data);
+    }
+    
+});
+});
 
 
 app.post('/login', function (request, response) {
