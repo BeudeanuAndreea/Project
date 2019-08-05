@@ -1,36 +1,49 @@
-
 cartObjects = [];
- var converted;
-total=0;
-var userId=localStorage.getItem('User');
+var converted;
+total = 0;
+var userId = localStorage.getItem('User');
 
 $(document).ready(function () {
 
     getCartItems(userId);
-    $(".order").click(function(){
+    $(".order").click(function () {
+        console.log(converted);
+        for (i = 0; i < converted.length; i++)
+            $.ajax({
+                url: `/update/statistics`,
+                type: 'PUT',
+                dataType: 'json',
+                data: {
+                    category_name: converted[i].category_name,
+                    q: converted[i].q
+                },
+                success: function (data){
+                    console.log("yas");
+                }
+            });
         alert("Order sent successfully!");
         deleteCart();
-        
-       
+
 
     });
 });
-function deleteCart(){
+
+function deleteCart() {
     $.ajax({
         url: `/delete`,
         type: 'DELETE',
         dataType: 'json',
         success: function (data) {
-        
+
             //for (i = 0; i < cartObjects.length; i++) {
-                
-                cartObjects.splice(0,cartObjects.length); 
-                    total =0;       
-                   alert("Thank you for your order!");
-                         
-                                
-           // }
-            $(".total-price-p").html("$"+total);
+
+            cartObjects.splice(0, cartObjects.length);
+            total = 0;
+            alert("Thank you for your order!");
+
+
+            // }
+            $(".total-price-p").html("$" + total);
             $(".message").html('Empty cart!');
             renderList(cartObjects);
 
@@ -40,7 +53,7 @@ function deleteCart(){
             console.log(error);
         }
     });
-    
+
 }
 
 function getCartItems(userId) {
@@ -49,33 +62,33 @@ function getCartItems(userId) {
         url: '/cart',
         type: 'post',
         dataType: 'json',
-        data : {
+        data: {
             uid: userId
         },
         success: function (data) {
-       
+
             cartObjects = data.cart;
             console.log(cartObjects);
-            for(i=0;i<cartObjects.length;i++){
+            for (i = 0; i < cartObjects.length; i++) {
                 total += cartObjects[i].price;
-               // itemNr++;
+                // itemNr++;
             }
-            $(".total-price-p").html("$"+total);
+            $(".total-price-p").html("$" + total);
             //$(".prod-number").html(itemNr);
             //console.log(itemNr);
 
-           converted = convert(cartObjects);
-        //    for(i=0;i<converted.length;i++){
-        //        $('.quantity').html(converted[i].q);
-        //        console.log(converted[i].q);
-        //    }
+            converted = convert(cartObjects);
+            //    for(i=0;i<converted.length;i++){
+            //        $('.quantity').html(converted[i].q);
+            //        console.log(converted[i].q);
+            //    }
             //sum(converted);
             renderList(converted);
-            
+
 
             //console.log(cartObjects);
-         
-            
+
+
         },
         error: function (error) {
             console.log(error);
@@ -91,9 +104,9 @@ function getCartItems(userId) {
 //     $(".prod-number").html(itemNr);
 
 // }
-function deleteItem(id,userId) {
-   console.log(userId);
-   console.log(converted);
+function deleteItem(id, userId) {
+    console.log(userId);
+    console.log(converted);
     $.ajax({
         url: `/delete/item`,
         type: 'delete',
@@ -103,25 +116,24 @@ function deleteItem(id,userId) {
             userid: userId
         },
         success: function (data) {
-           
-           console.log("dfdfdgdgfdfgg",converted);
-              for (i = 0; i < converted.length; i++) {
-                 if (converted[i]._id == id && converted[i].q == 1) {
 
-            // //         console.log(converted[i].q);
-                     total =total- converted[i].price;
-                     converted.splice(i, 1);
-                     break;
-                    
-                 }
-              else if(converted[i]._id == id && converted[i].q > 1){
-                     converted[i].q--;
-                     total =total- converted[i].price;
-                 }
-             }
-             $(".total-price-p").html("$"+total);
+            console.log("dfdfdgdgfdfgg", converted);
+            for (i = 0; i < converted.length; i++) {
+                if (converted[i]._id == id && converted[i].q == 1) {
+
+                    // //         console.log(converted[i].q);
+                    total = total - converted[i].price;
+                    converted.splice(i, 1);
+                    break;
+
+                } else if (converted[i]._id == id && converted[i].q > 1) {
+                    converted[i].q--;
+                    total = total - converted[i].price;
+                }
+            }
+            $(".total-price-p").html("$" + total);
             // getCartItems();
-            
+
             renderList(converted);
 
         },
@@ -133,24 +145,23 @@ function deleteItem(id,userId) {
 
 }
 
-function convert(cartObjects){
-    let i=0;
-    let qobjects=[];
-    while(i<cartObjects.length){
+function convert(cartObjects) {
+    let i = 0;
+    let qobjects = [];
+    while (i < cartObjects.length) {
         let item = cartObjects[i];
-        let  q=0;
-        let j=0;
-        while(j<cartObjects.length){
-            if(cartObjects[j]._id == item._id){
+        let q = 0;
+        let j = 0;
+        while (j < cartObjects.length) {
+            if (cartObjects[j]._id == item._id) {
                 q++;
-                cartObjects.splice(j,1);
-            }
-            else{
+                cartObjects.splice(j, 1);
+            } else {
                 j++;
             }
-           
+
         }
-        item.q= q;
+        item.q = q;
         qobjects.push(item);
     }
     return qobjects;
@@ -162,23 +173,20 @@ function renderList(cartObjects) {
         //total += this.price;
         let item = createItem(this);
         $('.container').append(item);
-       
+
     });
 
-    
 
     //$(".total-price-p").html("$"+total);
 
 }
 
 
-
-
 function createItem(cartObjects) {
     let converted = convert(cartObjects);
     let item = $("<div>").addClass('vinyl');
     let trash = $("<i>").addClass('fas fa-trash').addClass("trash");
-    
+
     let ul = $("<ul>").addClass('attributes');
     let img = $('<img/>').attr({
         'src': `${cartObjects.src}`,
@@ -192,7 +200,7 @@ function createItem(cartObjects) {
     const price = $("<li>").addClass('price').html('$');
     const quantity = $("<li>").addClass('quantity');
     quantity.append(cartObjects.q);
-    
+
 
     play.append(artist);
     play.append(name);
@@ -201,9 +209,9 @@ function createItem(cartObjects) {
     ul.append(play);
     ul.append(price);
     ul.append(quantity);
-    
-    trash.click(function(){
-        deleteItem(cartObjects._id,userId);
+
+    trash.click(function () {
+        deleteItem(cartObjects._id, userId);
     })
 
 
@@ -211,12 +219,9 @@ function createItem(cartObjects) {
     name.append(cartObjects.name);
     price.append(cartObjects.price);
 
-   
-    
 
     item.append(ul);
     item.append(trash);
-
 
 
     return item;

@@ -206,3 +206,11 @@ app.get('/statistics', function (request, response) {
         response.status(500).json(error);
     });
 });
+
+app.put('/update/statistics',function(request,response){
+    Category.update({name: request.body.category_name}, {$inc: {sales: request.body.q}}).then((data) => {
+        response.status(200).json(data);
+    }, (error) => {
+        response.status(500).json(error);
+    });
+});
