@@ -8,6 +8,10 @@ body {
     /* background-image: url('background.jpg'); */
     font-family: Ubuntu;
   }
+  .big{
+    height: 100%- 50px;
+    overflow: auto;
+  }
 .attributes {
     list-style: none;
     padding-left: 0;
@@ -15,15 +19,16 @@ body {
   }
   .type{
     padding: 20px 50px;
-    margin: auto auto auto 20%;
+    margin: auto auto auto auto;
     font-size: 20px;
   }
  
   .name{
       display: flex;
       margin-bottom: 10px;
-      width: 300px;
-      box-shadow: 1px 1px 1px 1px #f0efef;
+      width: 180px;
+      /* box-shadow: 1px 1px 1px 1px #f0efef; */
+      border: 0.5px solid rgb(238, 238, 238);
       background-color: white;
       cursor: pointer;
   }
@@ -78,7 +83,6 @@ body {
   }
   .container-left{
       width: 300px;
-      position: fixed;
       height: 100%;
       margin-left: 30px;
       
@@ -102,7 +106,7 @@ body {
  
     max-width: 1500px;
     margin-right: 20px;
-    margin-left: 350px; 
+    
     flex-direction: row;
     
    
@@ -118,8 +122,9 @@ body {
       
   }
   .vinyl{
-      margin-left: 40px;
-      box-shadow: 1px 1px 1px 1px #f0efef;
+      margin-right: 40px;
+      /* box-shadow: 1px 1px 1px 1px #f0efef; */
+      border: 0.5px solid rgb(238, 238, 238);
       margin-top: 20px;
       transition:  all 3s;
       background-color: white;
@@ -145,8 +150,8 @@ body {
   .button-color{
       background-color: #5EC13D;
       border-radius: 3px;
-      border: 0px;
-      box-shadow: 1px 1px 1px 1px #dddddd;
+      border: 1px;
+      /* box-shadow: 1px 1px 1px 1px #dddddd; */
       padding: 15px;
       color: white;
       transition: all 0.7s;
@@ -186,8 +191,10 @@ body {
   .price_div{
     
     padding: 15px 5px;
-    box-shadow: 1px 1px 1px 1px #f0efef;
+    /* box-shadow: 1px 1px 1px 1px #f0efef; */
+    border: 0.5px solid rgb(238, 238, 238);
     margin : 5px 0;
+    width: 180px;
     background-color: white;
     
   }
@@ -228,16 +235,31 @@ body {
 
   }
   .minmax{
-    width: 60px;
+    width: 35px;
     margin: 5px;
-    height: 40px;
-    font-size: 20px;
+    height: 30px;
+    font-size: 15px;
     padding: 0 10px;
+    
   }
   .search{
-    height: 45px;
-    font-size: 20px;
+    height: 34px;
     margin-left: 10px;
+    background-color: white;
+    border: 0px;
+  }
+  .fa-search{
+    font-size: 20px;
+  }
+  input[type=radio]:checked ~ .check {
+    border: 5px solid #0DFF92;
   }
   
+  input[type=radio]:checked ~ .check::before{
+    background: #0DFF92;
+  }
+  
+  input[type=radio]:checked ~ label{
+    color: #0DFF92;
+  }
   
