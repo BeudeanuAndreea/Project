@@ -17,8 +17,6 @@ $(document).ready(function () {
 
     console.log(addedToCart);
 
-   
-
     $('#rock-section').click(function (event) {
         //unselect another section when this is clicked
         $("#pop-section").css('background', 'white');
@@ -47,10 +45,7 @@ $(document).ready(function () {
             $(this).css('color', 'black');
 
 
-
         }
-
-
 
     });
 
