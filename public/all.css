@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body{
+    font-family: Ubuntu;
+}
+=======
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body{
 
@@ -8,3 +16,4 @@ body{
     text-align: justify;
 
 }
+>>>>>>> 2edd4c541cc019c6d6eacdee9221e6f60cbec1f3

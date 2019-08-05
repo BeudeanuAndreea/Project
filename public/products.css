@@ -219,10 +219,10 @@ body {
     cursor: pointer;
     
   }
-  .fas{
+   .fa-shopping-cart{
     font-size: 35px;
     position: relative;
-  }
+  } 
   .prod-number{
     position: absolute;
     color: #BF3A38;
