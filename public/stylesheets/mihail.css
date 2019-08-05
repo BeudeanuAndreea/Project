@@ -4,14 +4,20 @@
 body, html, .page-container {
     width: 100%;
     height: 100%;
-    margin: 0;
+    /*margin: 0;*/
 
     display: flex;
     flex-flow: column nowrap;
     position: relative;
+    background-image: url('/stylesheets/resized_copy.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    font-family: Ubuntu;
 
 
 }
+
 .fa-shopping-cart{
     font-size: 35px;
     position: relative;
