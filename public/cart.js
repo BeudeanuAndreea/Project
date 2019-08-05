@@ -1,7 +1,7 @@
 cartObjects = [];
 var converted;
 total = 0;
-// var userId = localStorage.getItem('User');
+ var userId = localStorage.getItem('User');
 
 $(document).ready(function () {
 
@@ -66,9 +66,9 @@ function getCartItems(userId) {
             uid: userId
         },
         success: function (data) {
-
+            //console.log(data);
             cartObjects = data.cart;
-            console.log(cartObjects);
+            //console.log(cartObjects);
             for (i = 0; i < cartObjects.length; i++) {
                 total += cartObjects[i].price;
                 // itemNr++;

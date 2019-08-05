@@ -108,6 +108,7 @@ body {
     margin-right: 20px;
     
     flex-direction: row;
+    justify-content: space-evenly;
     
    
   }
@@ -226,7 +227,7 @@ body {
   .prod-number{
     position: absolute;
     color: #BF3A38;
-   top : 0.0001px;
+   top : 1px; 
     
     
     z-index: auto;
@@ -262,4 +263,23 @@ body {
   input[type=radio]:checked ~ label{
     color: #0DFF92;
   }
+
+  #cart{
+    font-size: 35px;
+    position: relative;
+  }
+.prod-number{
+    position: absolute;
+    color: white;
+   top : 0.0001px;
+   border-radius: 50%;
+    background-color: #BF3A38;
+    font-size: small;
+    padding: 2px 5px 2px 5px;
+    z-index: auto;
+    right: 10px;
+    font-family: Ubuntu;
+
+  }
+  
   

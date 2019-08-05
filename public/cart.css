@@ -16,7 +16,7 @@ body{
 .order{
     position: absolute;
     bottom: 4px;
-    right: 4px;
+    right: 80px;
     background-color: #5EC13D;
       border-radius: 3px;
       border: 0px;
@@ -89,10 +89,11 @@ body{
     position: relative;
    
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
  background-color: white;
     width: 1080px;
-    margin:  10px auto;
+   margin: 0 auto;
+   height: 100px;
    
     
   
@@ -103,8 +104,11 @@ body{
 .total-string{
     font-size: 30px;
     margin: 0;
-    position: relative;
-    left: 5px;
+    position: absolute;
+    right: 150px;
+    
+   
+   
 }
 .total-price{
     
@@ -117,9 +121,10 @@ body{
 .total-price-p{
     margin:0;
     position: absolute;
-    right: 100px;
+     right: 170px; 
     color: #BF3A38;
     font: italic bold 20px/30px Georgia, serif;
+    bottom: 2px;
 }
 /* .container-right {
   display: flex;
@@ -142,12 +147,14 @@ body{
   }
 .prod-number{
     position: absolute;
-    color: #BF3A38;
+    color: white;
    top : 0.0001px;
-    
-    
+   border-radius: 50%;
+    background-color: #BF3A38;
+    font-size: small;
+    padding: 2px 5px 2px 5px;
     z-index: auto;
-    right: 25px;
+    right: 10px;
     font-family: Ubuntu;
 
   }

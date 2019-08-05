@@ -1,4 +1,4 @@
- const userId=localStorage.getItem('User');
+var userId=localStorage.getItem('User');
 const username = localStorage.getItem('Name');
 
 $(document).ready(function () {

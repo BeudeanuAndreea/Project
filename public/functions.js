@@ -19,6 +19,7 @@ function getCart(user) {
 
         }
         $(".prod-number").html(itemNr);
+        console.log(itemNr);
     
         },
         error: function (error) {
