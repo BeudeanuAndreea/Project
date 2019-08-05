@@ -1,7 +1,7 @@
 cartObjects = [];
 var converted;
 total = 0;
-var userId = localStorage.getItem('User');
+// var userId = localStorage.getItem('User');
 
 $(document).ready(function () {
 

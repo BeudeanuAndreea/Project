@@ -2,7 +2,7 @@ allObjects = [];
 var criteria = {}
 var cat_name = null;
 addedToCart = [];
-const userId=localStorage.getItem('User');
+// const userId=localStorage.getItem('User');
 
 
 
