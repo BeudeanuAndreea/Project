@@ -171,6 +171,7 @@ app.post('/cart/second', function (request, response) {
         }
     })
 });
+
 app.delete('/delete/item', function (request, response) {
     console.log(request.body.userid);
     User.findOne({ _id: request.body.userid }, function (err, user) {
@@ -233,6 +234,14 @@ const Category = mongoose.model('Category', categorySchema);
 
 app.get('/statistics', function (request, response) {
     Category.find().then((data) => {
+        response.status(200).json(data);
+    }, (error) => {
+        response.status(500).json(error);
+    });
+});
+
+app.put('/update/statistics',function(request,response){
+    Category.update({name: request.body.category_name}, {$inc: {sales: request.body.q}}).then((data) => {
         response.status(200).json(data);
     }, (error) => {
         response.status(500).json(error);
