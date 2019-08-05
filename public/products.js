@@ -292,8 +292,6 @@ $(document).ready(function () {
         button.append(add);
 
         add.append(span);
-
-
         artist.append(object.artist);
         name.append(object.name);
         price.append(object.price);
@@ -323,12 +321,6 @@ $(document).ready(function () {
 
 
     }
-
-
-
-
-
-
 
 
 

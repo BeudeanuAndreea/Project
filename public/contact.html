@@ -5,6 +5,8 @@
 	<title>Springtech's Vinyls</title>
 	<link rel="stylesheet" href="manu.css">
 	<link rel="stylesheet" href="contact.css">
+	<script src="jquery-1.7.1.js"></script>
+	<script src="contact.js"></script>
 </head>
 <body>
 		<div class="topnav" id="myTopnav">
@@ -18,12 +20,13 @@
 		</a>
 	</div>
 	<div class="page">
+		<div class="text-contact">Write a message</div>
 		<div class="inputs">
-			<input type="text" class="inp" placeholder="Name">
-			<input type="text" class="inp" placeholder="Email">
+			<input type="text" name="name" required class="inp" id="name" placeholder="Name" >
+			<input type="text" class="inp" id="email" placeholder="Email" required>
 		</div>
-		<div><textarea  class="com"></textarea></div>
-		
+		<div><textarea  class="com" id="message"  required></textarea></div>
+		 <input class="btn" type="button" value="Send" id="button"/>
 		
 	</div>
 </body>
