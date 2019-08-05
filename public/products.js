@@ -5,6 +5,7 @@ addedToCart = [];
 const userId=localStorage.getItem('User');
 
 
+
 $(document).ready(function () {
 
     getItems();
@@ -27,6 +28,7 @@ $(document).ready(function () {
        }
         
     });
+
 
     $('.submit').click(function (event) {
 
@@ -51,8 +53,8 @@ $(document).ready(function () {
             $(this).css('background', 'white');
             $(this).css('color', 'black');
         }
-
         getFilteredItems();
+
     });
 
 
@@ -290,8 +292,6 @@ $(document).ready(function () {
         button.append(add);
 
         add.append(span);
-
-
         artist.append(object.artist);
         name.append(object.name);
         price.append(object.price);
@@ -321,12 +321,6 @@ $(document).ready(function () {
 
 
     }
-
-
-
-
-
-
 
 
 
