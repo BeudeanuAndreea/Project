@@ -1,11 +1,12 @@
 
 cartObjects = [];
-converted = convert(cartObjects);
+ var converted;
 total=0;
+var userId=localStorage.getItem('User');
 
 $(document).ready(function () {
 
-    getCartItems();
+    getCartItems(userId);
     $(".order").click(function(){
         alert("Order sent successfully!");
         deleteCart();
@@ -42,15 +43,19 @@ function deleteCart(){
     
 }
 
-function getCartItems() {
+function getCartItems(userId) {
     //let itemNr=0;
     $.ajax({
-        url: `/cart`,
-        type: 'GET',
+        url: '/cart',
+        type: 'post',
         dataType: 'json',
+        data : {
+            uid: userId
+        },
         success: function (data) {
-            
+       
             cartObjects = data.cart;
+            console.log(cartObjects);
             for(i=0;i<cartObjects.length;i++){
                 total += cartObjects[i].price;
                // itemNr++;
@@ -60,7 +65,6 @@ function getCartItems() {
             //console.log(itemNr);
 
            converted = convert(cartObjects);
-        //    console.log(converted);
         //    for(i=0;i<converted.length;i++){
         //        $('.quantity').html(converted[i].q);
         //        console.log(converted[i].q);
@@ -78,6 +82,7 @@ function getCartItems() {
         }
     });
 }
+
 // function sum(converted){
 //     let itemNr=0;
 //     for(i=0;i<converted.length;i++){
@@ -86,32 +91,38 @@ function getCartItems() {
 //     $(".prod-number").html(itemNr);
 
 // }
-function deleteItem(id) {
-   
+function deleteItem(id,userId) {
+   console.log(userId);
+   console.log(converted);
     $.ajax({
-        url: `/delete/item/${id}`,
-        type: 'DELETE',
+        url: `/delete/item`,
+        type: 'delete',
         dataType: 'json',
+        data: {
+            id: id,
+            userid: userId
+        },
         success: function (data) {
-            console.log(converted);
-            // for (i = 0; i < cartObjects.length; i++) {
-            //     if (cartObjects[i]._id == id && cartObjects[i].q == 1) {
+           
+           console.log("dfdfdgdgfdfgg",converted);
+              for (i = 0; i < converted.length; i++) {
+                 if (converted[i]._id == id && converted[i].q == 1) {
 
-            //         console.log(cartObjects[i].q);
-            //         total =total- cartObjects[i].price;
-            //         cartObjects.splice(i, 1);
-            //         break;
+            // //         console.log(converted[i].q);
+                     total =total- converted[i].price;
+                     converted.splice(i, 1);
+                     break;
                     
-            //     }
-            //     else if(cartObjects[i]._id == id && cartObjects[i].q > 1){
-            //         cartObjects[i].q--;
-            //         total =total- cartObjects[i].price;
-            //     }
-            // }
-            // $(".total-price-p").html("$"+total);
-            // // getCartItems();
+                 }
+              else if(converted[i]._id == id && converted[i].q > 1){
+                     converted[i].q--;
+                     total =total- converted[i].price;
+                 }
+             }
+             $(".total-price-p").html("$"+total);
+            // getCartItems();
             
-           // renderList(convert(cartObjects));
+            renderList(converted);
 
         },
         error: function (error) {
@@ -192,7 +203,7 @@ function createItem(cartObjects) {
     ul.append(quantity);
     
     trash.click(function(){
-        deleteItem(cartObjects._id);
+        deleteItem(cartObjects._id,userId);
     })
 
 

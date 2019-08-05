@@ -1,12 +1,17 @@
 let cartObjects= [];
-function getCart() {
+var user=localStorage.getItem('User');
+function getCart(user) {
     let itemNr=0;
     $.ajax({
         
         url: `/cart/second`,
-        type: 'GET',
+        type: 'post',
         dataType: 'json',
+        data: {
+            uid: userId
+        },
         success: function (data) {
+            console.log(data);
             
         cartObjects = data.cart;
         for(i=0;i<cartObjects.length;i++){
@@ -21,4 +26,4 @@ function getCart() {
         }
     });
 }
-getCart();
+getCart(user);
