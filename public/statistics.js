@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    
     $(".border").click(function () {
         $(this).effect('shake');
     });

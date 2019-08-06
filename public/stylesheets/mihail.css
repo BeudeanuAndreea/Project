@@ -9,6 +9,10 @@ body, html, .page-container {
     display: flex;
     flex-flow: column nowrap;
     position: relative;
+    background-image: url("/stylesheets/cover.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1600px;
 
 
 }

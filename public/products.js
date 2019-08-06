@@ -3,11 +3,12 @@ var criteria = {}
 var cat_name = null;
 addedToCart = [];
 // const userId=localStorage.getItem('User');
+var user=localStorage.getItem('User');
 
 
 
 $(document).ready(function () {
-
+    getCartItems(user);
     getItems();
     $('#rock-section').css("border","0.5px solid rgb(238, 238, 238)");
     $('#pop-section').css("border","0.5px solid rgb(238, 238, 238)");
@@ -314,7 +315,7 @@ $(document).ready(function () {
             } else {
                 sendItem(object._id, object.name, userId);
                 console.log(localStorage);
-                getCart(userId);
+                //getCart(userId);
             }
 
 

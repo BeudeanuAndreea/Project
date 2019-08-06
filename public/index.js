@@ -19,6 +19,8 @@ $(document).ready(function () {
         $('.login-logout').on("click", function(event){
             window.location.href = 'index.html';
             window.localStorage.clear();
+           
+            
         });
        
        

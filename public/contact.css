@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 body{
-    background-image: url('/stylesheets/resized.jpg');
+  
     display: flex;
     font-family: Ubuntu;
+    background-image: url("/stylesheets/cover.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1700px;
 }
 .page{
-	margin:250px auto;
+	margin:350px auto;
 	flex-direction: column;
 }
 .inp{

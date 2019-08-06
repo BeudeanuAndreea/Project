@@ -157,6 +157,7 @@ app.post('/cart', function (request, response) {
             response.status(200).json(data);
         } else {
             response.status(500).json(null);
+            
         }
     })
 });
@@ -241,7 +242,7 @@ app.get('/statistics', function (request, response) {
 });
 
 app.put('/update/statistics',function(request,response){
-    Category.update({name: request.body.category_name}, {$inc: {sales: request.body.q}}).then((data) => {
+    Category.updateOne({name: request.body.category_name}, {$inc: {sales: request.body.q}}).then((data) => {
         response.status(200).json(data);
     }, (error) => {
         response.status(500).json(error);
